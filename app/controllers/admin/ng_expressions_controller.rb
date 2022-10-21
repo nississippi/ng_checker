@@ -18,6 +18,9 @@ class Admin::NgExpressionsController < ApplicationController
     @ng_expressions = all_ng_expressions.page(params[:page])
     @all_ng_expressions_count = all_ng_expressions.count
   end
+  
+  def show
+  end
 
   def edit
     @ng_expression = NgExpression.find(params[:id])
