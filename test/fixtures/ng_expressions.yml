@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ng_genre: one
+  ng_expression: MyString
+
+two:
+  ng_genre: two
+  ng_expression: MyString
