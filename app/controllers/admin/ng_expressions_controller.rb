@@ -1,24 +1,33 @@
 class Admin::NgExpressionsController < ApplicationController
-  def new
-    @ng_expression = NgExpression.new
-  end
-
-  def create
-    @ng_expression = NgExpression.new(ng_expression_params)
-    @ng_expression.save ? (redirect_to admin_ng_expressions_path) : (render :new)
-  end
-
   def index
+    @ng_expression = NgExpression.new
+
     if params[:ng_genre_id]
       @ng_genre = NgGenre.find(params[:ng_genre_id])
       all_ng_expressions = @ng_genre.ng_expressions
     else
-      all_ng_expressions = NgExpression.includes(:ng_genre)
+      all_ng_expressions = NgExpression.includes(:ng_genre_id)
     end
     @ng_expressions = all_ng_expressions.page(params[:page])
     @all_ng_expressions_count = all_ng_expressions.count
   end
-  
+
+  def create
+    @ng_expression = NgExpression.new(ng_expression_params)
+    if @ng_expression.save 
+      redirect_to admin_ng_expressions_path
+    else
+      if params[:ng_genre_id]
+        @ng_genre = NgGenre.find(params[:ng_genre_id])
+        all_ng_expressions = @ng_genre.ng_expressions
+      else
+        all_ng_expressions = NgExpression.includes(:ng_genre_id)
+      end
+      @ng_expressions = all_ng_expressions.page(params[:page])
+      render :index
+    end
+  end
+
   def show
   end
 

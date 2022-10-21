@@ -1,0 +1,26 @@
+<section class="inner">
+	<h2 class="section-ttl">ジャンル管理</h2>
+	<div class="mb3">
+		<h3>ジャンル新規登録</h3>
+  	<%= render 'form', genre: @ng_genre, url: admin_ng_genres_path, submit: '登録' %>
+	</div>
+	<div class="mb3">
+		<h3>ジャンル一覧</h3>
+		<table class="genre_info has_border">
+			<thead>
+				<tr>
+					<th>ジャンル名</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @ng_genres.each do |ng_genre| %>
+					<tr>
+						<td><%= link_to ng_genre.ng_genre,
+						admin_ng_expressions_path(ng_genre_id: ng_genre.id), class: "underline" %></td>
+						<td class="text-center"><%= link_to "編集", edit_admin_ng_genre_path(ng_genre), class: "btn btn-success" %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</section>
