@@ -1,4 +1,4 @@
-class NgGenreController < ApplicationController
+class Admin::NgGenresController < ApplicationController
   def index
     @ng_genre = NgGenre.new
     @ng_genres = NgGenre.all

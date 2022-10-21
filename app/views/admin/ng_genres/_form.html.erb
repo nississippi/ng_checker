@@ -1,5 +1,6 @@
 <%= form_with model:ng_genre, url: url do |f| %>
 	<%= render 'layouts/error_messages', resource: ng_genre %>
-	<%= f.label :name, "ジャンル名:" %>
+	<%= f.label :ng_genre, "ジャンル名:" %>
 	<%= f.text_field :ng_genre %>
+	<%= f.submit submit, class: "btn btn-primary" %>
 <% end %>

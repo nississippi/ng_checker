@@ -6,7 +6,7 @@ class Admin::NgExpressionsController < ApplicationController
       @ng_genre = NgGenre.find(params[:ng_genre_id])
       all_ng_expressions = @ng_genre.ng_expressions
     else
-      all_ng_expressions = NgExpression.includes(:ng_genre_id)
+      all_ng_expressions = NgExpression.all
     end
     @ng_expressions = all_ng_expressions.page(params[:page])
     @all_ng_expressions_count = all_ng_expressions.count
@@ -14,7 +14,7 @@ class Admin::NgExpressionsController < ApplicationController
 
   def create
     @ng_expression = NgExpression.new(ng_expression_params)
-    if @ng_expression.save 
+    if @ng_expression.save
       redirect_to admin_ng_expressions_path
     else
       if params[:ng_genre_id]
