@@ -23,6 +23,7 @@
 							</td>
 							<td class="text-center">
 								<%= link_to "編集", edit_admin_ng_expression_path(ng), class: "btn btn-sm btn-success" %>
+								<%= link_to "削除", admin_ng_expression_path(ng), method: :delete, class:"btn btn-sm btn-danger" %>
 							</td>
 						</tr>
 					<% end %>
