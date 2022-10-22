@@ -1,20 +1,33 @@
-<section class="inner">
-	<h2 class="section-ttl">NG新規登録</h2>
-  <%= render 'form', ng_expression: @ng_expression, url: admin_ng_expressions_path, submit: '登録' %>
-</section>
-
-<table class="genre_info has_border">
-	<thead>
-		<tr>
-			<th>NG表現</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @ng_expressions.each do |ng| %>
-			<tr>
-				<td><%= link_to ng.ng_expression, admin_ng_expressions_path, class: "underline" %></td>
-				<td class="text-center"><%= link_to "編集", edit_admin_ng_expression_path(ng), class: "btn btn-success" %></td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6 col-md-8 col-sm-12">
+			<h5 class="text-center text-light"><span class="bg-primary">NG表現新規登録</span></h2>
+		  <%= render 'form', ng_expression: @ng_expression, url: admin_ng_expressions_path,
+		  submit: '登録' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6 col-md-8 col-sm-12">
+			<table class="table mt-3">
+				<thead>
+					<tr>
+						<th>NG表現</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @ng_expressions.each do |ng| %>
+						<tr>
+							<td>
+								<%= link_to ng.ng_expression, admin_ng_expressions_path, class: "underline" %>
+							</td>
+							<td class="text-center">
+								<%= link_to "編集", edit_admin_ng_expression_path(ng), class: "btn btn-sm btn-success" %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
