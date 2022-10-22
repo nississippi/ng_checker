@@ -36,7 +36,12 @@ class Admin::NgExpressionsController < ApplicationController
   end
 
   def update
-    @ng_expression.update(ng_expression_params) ? (redirect_to admin_ng_expressions_path) : (render :edit)
+    @ng_expression = NgExpression.find(params[:id])
+    if @ng_expression.update(ng_expression_params)
+      redirect_to admin_ng_expressions_path
+    else
+      render :edit
+    end
   end
 
   def destroy
