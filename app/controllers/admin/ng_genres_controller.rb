@@ -15,6 +15,7 @@ class Admin::NgGenresController < ApplicationController
   end
 
   def show
+    @ng_genre = NgGenre.find(params[:id])
   end
 
   def edit
@@ -22,6 +23,7 @@ class Admin::NgGenresController < ApplicationController
   end
 
   def update
+    @ng_genre = NgGenre.find(params[:id])
     @ng_genre.update(ng_genre_params) ? (redirect_to admin_ng_genres_path) : (render :edit)
   end
 

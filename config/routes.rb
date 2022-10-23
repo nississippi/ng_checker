@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers, controllers: {
@@ -14,6 +15,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   namespace :admin do
     resources :ng_genres, except: [:new]
+    resources :media_genres, except: [:new]
+    resources :story_genres, except: [:new]
     resources :ng_expressions, except: [:new]
     resources :customers, only: [:index, :show, :edit, :update]
   end

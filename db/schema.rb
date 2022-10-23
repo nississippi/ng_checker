@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_23_110327) do
+ActiveRecord::Schema.define(version: 2022_10_23_160656) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -38,6 +38,12 @@ ActiveRecord::Schema.define(version: 2022_10_23_110327) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
+  create_table "media_genres", force: :cascade do |t|
+    t.string "media"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "ng_expressions", force: :cascade do |t|
     t.integer "ng_genre_id", null: false
     t.string "ng_expression"
@@ -48,6 +54,12 @@ ActiveRecord::Schema.define(version: 2022_10_23_110327) do
 
   create_table "ng_genres", force: :cascade do |t|
     t.string "ng_genre"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "story_genres", force: :cascade do |t|
+    t.string "story"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
