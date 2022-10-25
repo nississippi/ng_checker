@@ -16,8 +16,11 @@
 				<% @ng_genres.each do |ng_genre| %>
 					<tr>
 						<td><%= link_to ng_genre.ng_genre,
-						admin_ng_expressions_path(ng_genre_id: ng_genre.id), class: "underline" %></td>
-						<td class="text-center"><%= link_to "編集", edit_admin_ng_genre_path(ng_genre), class: "btn btn-success" %></td>
+						admin_ng_expressions_path(ng_genre.id), class: "underline" %></td>
+						<td class="text-center">
+							<%= link_to "編集", edit_admin_ng_genre_path(ng_genre), class: "btn btn-success" %>
+							<%= link_to "削除", admin_ng_genre_path(ng_genre), method: :delete, class:"btn btn-sm btn-danger" %>
+						</td>
 					</tr>
 				<% end %>
 			</tbody>

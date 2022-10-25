@@ -7,7 +7,7 @@ class Admin::StoryGenresController < ApplicationController
   def create
     @story = StoryGenre.new(story_params)
     if @story.save
-      redirect_to admin_stories_path
+      redirect_to admin_story_genres_path
     else
       @stories = StoryGenre.all
       render :index
@@ -29,7 +29,7 @@ class Admin::StoryGenresController < ApplicationController
 
   def destroy
     StoryGenre.find_by(id: params[:id]).destroy
-    redirect_to admin_stories_path
+    redirect_to admin_story_genres_path
   end
 
   private

@@ -7,7 +7,7 @@ class Admin::MediaGenresController < ApplicationController
   def create
     @media = MediaGenre.new(media_params)
     if @media.save
-      redirect_to admin_medias_path
+      redirect_to admin_media_genres_path
     else
       @medias = MediaGenre.all
       render :index
@@ -29,7 +29,7 @@ class Admin::MediaGenresController < ApplicationController
 
   def destroy
     MediaGenre.find_by(id: params[:id]).destroy
-    redirect_to admin_medias_path
+    redirect_to admin_media_genres_path
   end
 
   private
