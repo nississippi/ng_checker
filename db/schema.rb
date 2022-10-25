@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_25_044907) do
+ActiveRecord::Schema.define(version: 2022_10_25_113425) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(version: 2022_10_25_044907) do
     t.string "ng_genre"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ng_tagging_contents", force: :cascade do |t|
+    t.integer "ng_expression_id"
+    t.integer "content_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_ng_tagging_contents_on_content_id"
+    t.index ["ng_expression_id"], name: "index_ng_tagging_contents_on_ng_expression_id"
   end
 
   create_table "story_genres", force: :cascade do |t|

@@ -19,7 +19,7 @@
 					<% @ng_expressions.each do |ng| %>
 						<tr>
 							<td>
-								<%= link_to ng.ng_expression, admin_ng_expressions_path, class: "underline" %>
+								<%= link_to ng.ng_expression, admin_ng_expression_path(ng), class: "underline" %>
 							</td>
 							<td class="text-center">
 								<%= link_to "編集", edit_admin_ng_expression_path(ng), class: "btn btn-sm btn-success" %>
