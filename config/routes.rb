@@ -19,6 +19,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :story_genres, except: [:new]
     resources :ng_expressions, except: [:new]
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :contents
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

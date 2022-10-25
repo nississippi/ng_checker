@@ -1,0 +1,34 @@
+<%= form_with model:content, url: url do |f| %>
+	<%= render 'layouts/error_messages', resource: content %>
+	<div class="flex">
+		<table class="table">
+			<thead>
+				<tr>
+					<th><%= title %></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><%= f.label :name, "コンテンツ" %></td>
+					<td><%= f.text_field :content %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :media_genre_id, "媒体" %></td>
+					<td>
+						<%= f.collection_select :media_genre_id, MediaGenre.all, :id, :media %>
+					</td>
+				</tr>
+				<tr>
+					<td><%= f.label :story_genre_id, "作品傾向" %></td>
+					<td>
+						<%= f.collection_select :story_genre_id, StoryGenre.all, :id, :story %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="text-center">
+		<%= f.submit submit, class: "btn btn-sm btn-primary" %>
+	</div>
+<% end %>
