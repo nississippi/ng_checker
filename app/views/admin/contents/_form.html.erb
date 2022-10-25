@@ -10,8 +10,12 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><%= f.label :name, "コンテンツ" %></td>
-					<td><%= f.text_field :content %></td>
+					<td><%= f.label :title, "コンテンツ" %></td>
+					<td><%= f.text_field :title %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :release_year, "公開した年" %></td>
+					<td><%= f.text_field :release_year %></td>
 				</tr>
 				<tr>
 					<td><%= f.label :media_genre_id, "媒体" %></td>

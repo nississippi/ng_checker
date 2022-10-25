@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_25_031646) do
+ActiveRecord::Schema.define(version: 2022_10_25_044907) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2022_10_25_031646) do
     t.string "ng_expression"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "vote"
     t.index ["ng_genre_id"], name: "index_ng_expressions_on_ng_genre_id"
   end
 
