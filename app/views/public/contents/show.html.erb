@@ -16,6 +16,13 @@
 							<td>
 								<%= ng.ng_expression %>
 							</td>
+							<td>
+								<%= link_to ng_expression_votes_path(ng), method: :post do %>
+        					出てくる
+      					<% end %>
+								どちらとも言えない
+								出てこない
+							</td>
 						</tr>
 					<% end %>
 				</tbody>
