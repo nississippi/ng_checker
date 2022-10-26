@@ -1,0 +1,7 @@
+ ja:
+    enums:
+      ng_expression:
+        vote:
+          yes: "◯"
+          difficult: "△"
+          no: "×"

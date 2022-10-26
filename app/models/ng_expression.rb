@@ -3,4 +3,7 @@ class NgExpression < ApplicationRecord
   has_many :ng_tagging_contents, dependent: :destroy
 
   validates :ng_expression, presence: true
+  def voted_by?(customer)
+    favorites.exists?(customer_id: customer.id)
+  end
 end

@@ -29,6 +29,7 @@ class Admin::NgExpressionsController < ApplicationController
   end
 
   def show
+    @ng_expression = NgExpression.find(params[:id])
   end
 
   def edit
