@@ -1,0 +1,22 @@
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-lg-6 col-md-8 col-sm-12">
+			<table class="table mt-3">
+				<thead>
+					<tr>
+						<th>コンテンツ一覧</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @contents.each do |content| %>
+						<tr>
+							<td>
+								<%= link_to content.title, content_path(content), class: "underline" %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

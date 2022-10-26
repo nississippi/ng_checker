@@ -1,0 +1,25 @@
+<div class="container mt-5">
+
+  <h1><%= @content.title %></h1>
+
+	<div class="row">
+		<div class="col-lg-6 col-md-8 col-sm-12">
+			<table class="table mt-3">
+				<thead>
+					<tr>
+						<th>NG一覧</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @ng_expressions.each do |ng| %>
+						<tr>
+							<td>
+								<%= ng.ng_expression %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
