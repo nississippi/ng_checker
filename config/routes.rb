@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  scope module: :public do
+    root 'homes#top'
+  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers, controllers: {
