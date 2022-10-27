@@ -22,39 +22,41 @@
                   ようこそ、<%= current_customer.nickname %>さん！
                 </li>
                 <li>
-                  <%= link_to "コンテンツ一覧", contents_path, class: "btn btn-light mx-3", style: "width: 110px;" %>
+                  <%= link_to "コンテンツ", contents_path, class: "btn btn-light mx-3", style: "width: 110px;" %>
                 </li>
                 <li>
-                  <%= link_to "NG一覧", ng_expressions_path, class: "btn btn-light mx-3", style: "width: 110px;" %>
+                  <%= link_to "NG", ng_expressions_path, class: "btn btn-light mx-3", style: "width: 110px;" %>
                 </li>
                 <li>
                   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-light mx-3", style: "width: 110px;" %>
                 </li>
               <% elsif admin_signed_in? %>
                 <li>
-                  <%= link_to "コンテンツ一覧", admin_contents_path, class: "btn btn-sm btn-light mx-3", style: "width: 110px;" %>
+                  <%= link_to "コンテンツ", admin_contents_path, class: "btn btn-sm btn-light mx-3", style: "width: 110px;" %>
                 </li>
                 <li>
-                  <%= link_to "NG一覧", admin_ng_expressions_path, class: "btn btn-sm btn-light mx-3", style: "width: 110px;" %>
+                  <%= link_to "NG", admin_ng_expressions_path, class: "btn btn-sm btn-light mx-3", style: "width: 110px;" %>
                 </li>
                 <li>
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-sm btn-light mx-3", style: "width: 110px;" %>
                 </li>
               <% else %>
                 <li>
-                  <%= link_to "コンテンツ一覧", contents_path, class: "btn btn-light mx-3", style: "width: 110px;" %>
+                  <%= link_to "コンテンツ", contents_path, class: "btn btn-light mx-3", style: "width: 110px;" %>
                 </li>
                 <li>
-                  <%= link_to "NG一覧", ng_expressions_path, class: "btn btn-light mx-3", style: "width: 110px;" %>
+                  <%= link_to "NG", ng_expressions_path, class: "btn btn-light mx-3", style: "width: 110px;" %>
                 </li>
                 <li>
-                  <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-light mx-3", style: "width: 110px;" %>
+                  <%= link_to "会員登録", new_customer_registration_path, class: "btn btn-light mx-3", style: "width: 110px;" %>
                 </li>
                 <li>
                   <%= link_to "ログイン", customer_session_path, class: "btn btn-light mx-3", style: "width: 110px;" %>
                 </li>
                 <li>
-                  <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post %>
+                  <%= link_to customers_guest_sign_in_path, class: "btn btn-light mx-3", style: "width: 110px;", method: :post do %>
+                    ゲスト<br>（閲覧用）
+                  <% end %>
                 </li>
               <% end %>
             </div>
