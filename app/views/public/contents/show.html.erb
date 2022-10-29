@@ -17,7 +17,9 @@
 								<%= ng.ng_expression %>
 							</td>
 							<td>
-								
+								<%= link_to ng_expressions_path(ng), method: :post do %>
+					        yes<%=ng.votes.where(vote=="0").count %>
+					      <% end %>
 							</td>
 						</tr>
 					<% end %>

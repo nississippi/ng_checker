@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     resources :contents, only: [:index, :show]
-    resources :ng_expressions, only: [:index, :show]
+    resources :ng_expressions, only: [:index, :show, :create]
   end
 # 顧客用
 # URL /customers/sign_in ...
