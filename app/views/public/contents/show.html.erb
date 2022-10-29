@@ -14,11 +14,20 @@
 					<% @ng_expressions.each do |ng| %>
 						<tr>
 							<td>
-								<%= ng.ng_expression %>
+								<%= ng.ng_expression %>が
 							</td>
 							<td>
-								<%= link_to ng_expressions_path(ng), method: :post do %>
-					        yes<%=ng.votes.where(vote=="0").count %>
+								ここにif分を記述する
+								<%= link_to ng_expression_ng_answer_vote_path(ng.id, 0), method: :post do %>
+					        出てくる
+					      <% end %>
+					      /
+					      <%= link_to ng_expression_ng_answer_vote_path(ng.id, 1), method: :post do %>
+					        出てこない
+					      <% end %>
+					      /
+					      <%= link_to ng_expression_ng_answer_vote_path(ng.id, 2), method: :post do %>
+					        どちらとも言えない
 					      <% end %>
 							</td>
 						</tr>

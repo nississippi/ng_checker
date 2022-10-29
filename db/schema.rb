@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_25_131450) do
+ActiveRecord::Schema.define(version: 2022_10_29_214600) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 2022_10_25_131450) do
     t.string "media"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ng_answers", force: :cascade do |t|
+    t.integer "ng_expression_id"
+    t.integer "customer_id"
+    t.integer "vote"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_ng_answers_on_customer_id"
+    t.index ["ng_expression_id"], name: "index_ng_answers_on_ng_expression_id"
   end
 
   create_table "ng_expressions", force: :cascade do |t|

@@ -13,4 +13,16 @@ class Public::NgExpressionsController < ApplicationController
   def show
     @ng_expression = NgExpression.find(params[:id])
   end
+
+  def create
+    ng_expression = NgExpression.new(ng_expression_params)
+    ng_expression.save
+    redirect_to content_path(content)
+  end
+
+  private
+
+  def ng_expression_params
+    params.require(:ng_expression).permit(:vote)
+  end
 end

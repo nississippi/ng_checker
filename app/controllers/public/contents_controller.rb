@@ -15,12 +15,4 @@ class Public::ContentsController < ApplicationController
     end
     @ng_expressions = all_ng_expressions.page(params[:page])
   end
-  
-  def create
-    content = Content.find(params[:id])
-    ng_expression = NgExpression.find(params[:id])
-    vote = ng_expression.votes.new(ng_expression_id: ng_expression.id)
-    vote.save
-    redirect_to content_path(content)
-  end
 end
