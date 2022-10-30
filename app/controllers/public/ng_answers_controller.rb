@@ -5,13 +5,13 @@ class Public::NgAnswersController < ApplicationController
     ng_answer.save
     #content = ng_answer.ng_expression.content
     # TODO refere リファラーというやつを使うと元居たページに戻れる
-    redirect_to root_path #content_path(content)
+    request.referer
   end
-  
+
   def destroy
     ng_answer = NgAnswer.find(params[:id])
     ng_answer.destroy
-    redirect_to root_path #content_path(content)
+    redirect_to root_path
   end
 
   private

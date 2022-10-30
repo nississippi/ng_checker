@@ -17,9 +17,9 @@
 								<%= ng.ng_expression %>が
 							</td>
 							<td>
-								ここにif分を記述する
 								<%= link_to ng_expression_ng_answer_vote_path(ng.id, 0), method: :post do %>
 					        出てくる
+					        <%= ng.ng_answers.where(vote: 0).count %>
 					      <% end %>
 					      /
 					      <%= link_to ng_expression_ng_answer_vote_path(ng.id, 1), method: :post do %>
