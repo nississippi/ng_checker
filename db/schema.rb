@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_29_214600) do
+ActiveRecord::Schema.define(version: 2022_10_30_100141) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 2022_10_29_214600) do
     t.integer "vote"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "content_id", null: false
+    t.index ["content_id"], name: "index_ng_answers_on_content_id"
     t.index ["customer_id"], name: "index_ng_answers_on_customer_id"
     t.index ["ng_expression_id"], name: "index_ng_answers_on_ng_expression_id"
   end
@@ -105,5 +107,6 @@ ActiveRecord::Schema.define(version: 2022_10_29_214600) do
     t.index ["ng_expression_id"], name: "index_votes_on_ng_expression_id"
   end
 
+  add_foreign_key "ng_answers", "contents"
   add_foreign_key "ng_expressions", "ng_genres"
 end

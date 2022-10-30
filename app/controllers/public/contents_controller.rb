@@ -14,5 +14,6 @@ class Public::ContentsController < ApplicationController
       all_ng_expressions = NgExpression.all
     end
     @ng_expressions = all_ng_expressions.page(params[:page])
+    @ng_answers = @content.ng_answers
   end
 end
