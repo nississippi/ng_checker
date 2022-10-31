@@ -20,8 +20,29 @@
 							<td>
 								<% if @content.answered_by?(current_customer, ng, 0) %>
 									<%= link_to ng_expression_ng_answer_path(ng.id, 0, content_id: @content.id), method: :delete do %>
+										出てくる
+										<%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
+									<% end %>
+									/
+									<%= link_to ng_expression_ng_answer_path(ng.id, 0, content_id: @content.id), method: :delete do %>
+									<%= link_to ng_expression_ng_answer_vote_path(ng.id, 1, content_id: @content.id), method: :post do %>
+										出てこない
+										<%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
+									<% end %>
+									<% end %>
+						      /
+						      <%= link_to ng_expression_ng_answer_path(ng.id, 0, content_id: @content.id), method: :delete do %>
+						      <%= link_to ng_expression_ng_answer_vote_path(ng.id, 2, content_id: @content.id), method: :post do %>
+						        どちらとも言えない
+						        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
+						      <% end %>
+						      <% end %>
+						    <% elsif @content.answered_by?(current_customer, ng, 1) %>
+						    	<%= link_to ng_expression_ng_answer_path(ng.id, 1, content_id: @content.id), method: :delete do %>
+						    	<%= link_to ng_expression_ng_answer_vote_path(ng.id, 0, content_id: @content.id), method: :post do %>
 						        出てくる
 						        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
+						      <% end %>
 						      <% end %>
 						      /
 						      <%= link_to ng_expression_ng_answer_path(ng.id, 1, content_id: @content.id), method: :delete do %>
@@ -29,7 +50,28 @@
 						        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
 						      <% end %>
 						      /
+						      <%= link_to ng_expression_ng_answer_path(ng.id, 1, content_id: @content.id), method: :delete do %>
+						      <%= link_to ng_expression_ng_answer_vote_path(ng.id, 2, content_id: @content.id), method: :post do %>
+						        どちらとも言えない
+						        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
+						      <% end %>
+						      <% end %>
+						    <% elsif @content.answered_by?(current_customer, ng, 2) %>
+						    	<%= link_to ng_expression_ng_answer_path(ng.id, 2, content_id: @content.id), method: :delete do %>
+						    	<%= link_to ng_expression_ng_answer_vote_path(ng.id, 0, content_id: @content.id), method: :post do %>
+						        出てくる
+						        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
+						      <% end %>
+						      <% end %>
+						      /
 						      <%= link_to ng_expression_ng_answer_path(ng.id, 2, content_id: @content.id), method: :delete do %>
+						      <%= link_to ng_expression_ng_answer_vote_path(ng.id, 1, content_id: @content.id), method: :post do %>
+										出てこない
+										<%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
+									<% end %>
+									<% end %>
+									/
+									<%= link_to ng_expression_ng_answer_path(ng.id, 2, content_id: @content.id), method: :delete do %>
 						        どちらとも言えない
 						        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
 						      <% end %>
