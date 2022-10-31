@@ -1,9 +1,24 @@
 class Public::NgAnswersController < ApplicationController
 
   def create
-    ng_answer = NgAnswer.new(ng_expression_id: ng_answer_params[:ng_expression_id],
-    content_id: ng_answer_params[:content_id],
-    customer_id: current_customer.id, vote: ng_answer_params[:vote].to_i)
+    current_ng_answer = NgAnswer.find_by(
+      ng_expression_id: ng_answer_params[:ng_expression_id],
+      content_id: ng_answer_params[:content_id],
+      customer_id: current_customer.id)
+
+    if current_ng_answer
+      current_ng_answer.destroy!
+
+      if current_ng_answer.vote_before_type_cast == ng_answer_params[:vote].to_i
+        return redirect_to content_path(ng_answer_params[:content_id])
+      end
+    end
+
+    ng_answer = NgAnswer.new(
+      ng_expression_id: ng_answer_params[:ng_expression_id],
+      content_id: ng_answer_params[:content_id],
+      customer_id: current_customer.id,
+      vote: ng_answer_params[:vote].to_i)
 
     ng_answer.save
     #content = ng_answer.ng_expression.content
