@@ -16,22 +16,39 @@
 							<td>
 								<%= ng.ng_expression %>が
 							</td>
-							<!-- パスパラメータのng.idで親の引数、0で子の引数を指定している。パスパラメータ、クエリパラメータの順に記述-->
+							<!-- パスパラメータのng.idで親の引数、0で子の引数を指定している。パスパラメータ、クエリパラメータ(コロンいるやつ）の順に記述-->
 							<td>
-								<%= link_to ng_expression_ng_answer_path(ng.id, 0, content_id: @content.id), method: :delete do %>
-					        出てくる
-					        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
-					      <% end %>
-					      /
-					      <%= link_to ng_expression_ng_answer_vote_path(ng.id, 1, content_id: @content.id), method: :post do %>
-					        出てこない
-					        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
-					      <% end %>
-					      /
-					      <%= link_to ng_expression_ng_answer_vote_path(ng.id, 2, content_id: @content.id), method: :post do %>
-					        どちらとも言えない
-					        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
-					      <% end %>
+								<% if @content.answered_by?(current_customer, ng, 0) %>
+									<%= link_to ng_expression_ng_answer_path(ng.id, 0, content_id: @content.id), method: :delete do %>
+						        出てくる
+						        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
+						      <% end %>
+						      /
+						      <%= link_to ng_expression_ng_answer_path(ng.id, 1, content_id: @content.id), method: :delete do %>
+						        出てこない
+						        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
+						      <% end %>
+						      /
+						      <%= link_to ng_expression_ng_answer_path(ng.id, 2, content_id: @content.id), method: :delete do %>
+						        どちらとも言えない
+						        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
+						      <% end %>
+						    <% else %>
+						    	<%= link_to ng_expression_ng_answer_vote_path(ng.id, 0, content_id: @content.id), method: :post do %>
+						        出てくる
+						        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
+						      <% end %>
+						      /
+						      <%= link_to ng_expression_ng_answer_vote_path(ng.id, 1, content_id: @content.id), method: :post do %>
+						        出てこない
+						        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
+						      <% end %>
+						      /
+						      <%= link_to ng_expression_ng_answer_vote_path(ng.id, 2, content_id: @content.id), method: :post do %>
+						        どちらとも言えない
+						        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
+						      <% end %>
+						    <% end %>
 							</td>
 						</tr>
 					<% end %>
