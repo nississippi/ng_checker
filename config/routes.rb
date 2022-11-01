@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       resources :ng_answers, only: [:destroy]
     end
     #resources :ng_expressions, only: [:index, :show, :create] # TODO: ルーティング敵には上の方が正しいのでこの行は消すべき
-    resources :comments, only: [:new, :index]
+    resources :comments, only: [:new, :create, :index, :edit, :update, :destroy]
   end
 # 顧客用
 # URL /customers/sign_in ...

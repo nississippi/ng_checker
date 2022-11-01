@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :ng_answers, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 
   validates :nickname, presence: true
