@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'comments/new'
-    get 'comments/index'
-  end
   scope module: :public do
     root 'homes#top'
     resources :contents, only: [:index, :show]
@@ -13,6 +9,7 @@ Rails.application.routes.draw do
       resources :ng_answers, only: [:destroy]
     end
     #resources :ng_expressions, only: [:index, :show, :create] # TODO: ルーティング敵には上の方が正しいのでこの行は消すべき
+    resources :comments, only: [:new, :index]
   end
 # 顧客用
 # URL /customers/sign_in ...
