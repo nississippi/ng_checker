@@ -1,0 +1,22 @@
+<%= form_with model:comment, url: url do |f| %>
+	<%= render 'layouts/error_messages', resource: comment %>
+	<div class="flex">
+		<table class="table">
+			<thead>
+				<tr>
+					<th><%= title %></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><%= f.label :comment, "コメント" %></td>
+					<td><%= f.text_area :comment %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="text-center">
+		<%= f.submit submit, class: "btn btn-sm btn-primary" %>
+	</div>
+<% end %>
