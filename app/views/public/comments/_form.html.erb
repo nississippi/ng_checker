@@ -12,6 +12,8 @@
 				<tr>
 					<td><%= f.label :comment, "コメント" %></td>
 					<td><%= f.text_area :comment %></td>
+					<%= f.hidden_field :content_id, value: content.id %>
+					<%= f.hidden_field :ng_expression_id, value: ng_expression.id %>
 				</tr>
 			</tbody>
 		</table>

@@ -34,6 +34,11 @@
 					      <% end %>
 							</td>
 						</tr>
+						<tr>
+							<td>
+								<%= link_to "コメント追加", new_ng_expression_comment_path(ng.id, @content.id)%>
+							</td>
+						</tr>
 					<% end %>
 				</tbody>
 			</table>
