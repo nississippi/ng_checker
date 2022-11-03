@@ -26,14 +26,6 @@ class Public::NgAnswersController < ApplicationController
     redirect_to content_path(ng_answer_params[:content_id])
   end
 
-  def destroy
-    content = Content.find(params[:content_id])
-    ng_expression = NgExpression.find(params[:ng_expression_id])
-    ng_answer = current_customer.ng_answers.find_by(content_id: content.id, ng_expression_id: ng_expression.id)
-    ng_answer.destroy
-    redirect_to content_path(params[:content_id])
-  end
-
   private
 
 #permitの中身はビューから送られてくるデータ（params）なのでカスタマーIDいらない

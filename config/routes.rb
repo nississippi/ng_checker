@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     #/:何とかは全部パスパラメータ(vote)
     resources :ng_expressions, only: [:index, :show, :create] do
       post 'ng_answer/:vote', to: 'ng_answers#create', as: "ng_answer_vote"
-      resources :ng_answers, only: [:destroy]
     end
     #resources :ng_expressions, only: [:index, :show, :create] # TODO: ルーティング敵には上の方が正しいのでこの行は消すべき
     resources :comments, only: [:new, :create, :index, :edit, :update, :destroy]
