@@ -14,13 +14,18 @@
 					<td><%= f.text_field :title %></td>
 				</tr>
 				<tr>
-					<td><%= f.label :release_year, "公開した年" %></td>
+					<td><%= f.label :release_year, "公開した" %></td>
 					<td><%= f.text_field :release_year %></td>
 				</tr>
 				<tr>
 					<td><%= f.label :media_genre_id, "媒体" %></td>
 					<td>
-						<%= f.collection_select :media_genre_id, MediaGenre.all, :id, :media %>
+						<%= f.collection_check_boxes(:media_genre_id, MediaGenre.all, :id, :media) do |media| %>
+				      <%= media.label do %>
+				        <%= media.check_box %>
+				        <%= media.text %>
+				      <% end %>
+				    <% end %>
 					</td>
 				</tr>
 				<tr>
