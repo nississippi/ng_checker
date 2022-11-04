@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_01_145354) do
+ActiveRecord::Schema.define(version: 2022_11_04_143555) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(version: 2022_11_01_145354) do
     t.string "media"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "media_tag_contents", force: :cascade do |t|
+    t.integer "media_genre_id"
+    t.integer "content_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_media_tag_contents_on_content_id"
+    t.index ["media_genre_id"], name: "index_media_tag_contents_on_media_genre_id"
   end
 
   create_table "ng_answers", force: :cascade do |t|

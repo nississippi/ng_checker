@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'media_tag_contents/create'
+    get 'media_tag_contents/destroy'
+  end
   scope module: :public do
     root 'homes#top'
     resources :contents, only: [:index, :show]
