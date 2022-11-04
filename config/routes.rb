@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'media_tag_contents/create'
-    get 'media_tag_contents/destroy'
-  end
   scope module: :public do
     root 'homes#top'
     resources :contents, only: [:index, :show]
@@ -40,6 +36,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :customers, only: [:index, :show, :edit, :update]
     resources :contents
     resources :ng_tagging_contents, only: [:create, :destroy]
+    resources :media_tag_contents, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
