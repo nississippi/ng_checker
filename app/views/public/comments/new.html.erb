@@ -2,7 +2,9 @@
 	<div class="row">
 		<div class="col-lg-6 col-md-8 col-sm-12">
 			<h5 class="text-center text-light">
-				<span class="bg-primary">　<%= @content.title %>に<%= @ng_expression.ng_expression %>　</span>
+				<span class="bg-primary">
+					　<%= @content.title %>に<%= @ng_expression.ng_expression %>は出てくる？
+				</span>
 			</h5>
 		  <%= render 'form', comment: @comment,
 			  content: @content, ng_expression: @ng_expression,

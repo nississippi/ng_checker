@@ -16,6 +16,14 @@
 							<td>
 								<%= comment.comment %>
 							</td>
+							<td>
+								<%= link_to "編集",
+									edit_ng_expression_comment_path(@ng_expression.id, comment.id, content_id: @content.id),
+									class: "btn btn-sm btn-success" %>
+								<%= link_to "削除",
+									ng_expression_comment_path(@ng_expression.id, comment.id), method: :delete,
+									class:"btn btn-sm btn-danger" %>
+							</td>
 						</tr>
 					<% end %>
 				</tbody>

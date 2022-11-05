@@ -13,7 +13,8 @@ class Public::CommentsController < ApplicationController
       comment: comment_params[:comment])
 
     if @comment.save
-      redirect_to ng_expression_comments_path
+      #クエリパラメータでcontent_idを渡す必要がある
+      redirect_to ng_expression_comments_path(content_id: comment_params[:content_id])
     else
       render :new
     end
@@ -28,20 +29,24 @@ class Public::CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find(params[:id])
+    @ng_expression = NgExpression.find(params[:ng_expression_id])
+    @content = Content.find(params[:content_id])
   end
 
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      redirect_to comments_path
+      redirect_to ng_expression_comments_path(content_id: comment_params[:content_id])
     else
       render :edit
     end
   end
 
   def destroy
-    Comment.find_by(id: params[:id]).destroy
-    redirect_to comments_path
+    comment = Comment.find_by(id: params[:id])
+    content_id = comment.content_id
+    comment.destroy
+    redirect_to ng_expression_comments_path(content_id: content_id)
   end
 
   private
