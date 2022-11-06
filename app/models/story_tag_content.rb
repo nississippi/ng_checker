@@ -1,0 +1,2 @@
+class StoryTagContent < ApplicationRecord
+end
