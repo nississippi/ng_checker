@@ -32,7 +32,13 @@
 				<tr>
 					<td><%= f.label :story_genre_id, "作品傾向" %></td>
 					<td>
-						<%= f.collection_select :story_genre_id, StoryGenre.all, :id, :story %>
+						<%= f.collection_check_boxes(
+							:story_genre_ids,StoryGenre.all, :id, :story) do |story| %>
+				      <%= story.label do %>
+				        <%= story.check_box %>
+				        <%= story.text %>
+				      <% end %>
+				    <% end %>
 					</td>
 				</tr>
 			</tbody>

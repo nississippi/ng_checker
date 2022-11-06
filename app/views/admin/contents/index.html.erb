@@ -1,17 +1,26 @@
 <div class="container mt-5">
 	<div class="row">
+		<div class="col-lg-2 col-md-4 col-sm-12">
+			<h3 class="side-title">媒体</h3>
+				<ul>
+					<li><%= link_to "すべて", admin_contents_path %></li>
+					<% @media_genres.each do |media_genre| %>
+						<li>
+							<%= link_to media_genre.media, admin_contents_path(media_genre_id: media_genre.id) %>
+						</li>
+					<% end %>
+				</ul>
+			<h3 class="side-title">作品傾向</h3>
+				<ul>
+					<li><%= link_to "すべて", admin_contents_path %></li>
+					<% @story_genres.each do |story_genre| %>
+						<li>
+							<%= link_to story_genre.story, admin_contents_path(story_genre_id: story_genre.id) %>
+						</li>
+					<% end %>
+				</ul>
+		</div>
 		<div class="col-lg-6 col-md-8 col-sm-12">
-			<h3 class="side-title">カテゴリー</h3>
-			  <ul>
-			  	<li>
-			  		<%= link_to "すべて", admin_contents_path %>
-			  	</li>
-			    <% @media_genres.each do |media_genre| %>
-			      <li>
-			        <%= link_to media_genre.media, admin_contents_path(media_genre_id: media_genre.id) %>
-			      </li>
-			    <% end %>
-			  </ul>
 			<table class="table mt-3">
 				<thead>
 					<tr>

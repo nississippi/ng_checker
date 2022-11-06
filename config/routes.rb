@@ -37,6 +37,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :contents
     resources :ng_tagging_contents, only: [:create, :destroy]
     resources :media_tag_contents, only: [:create, :destroy]
+    resources :story_tag_contents, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
