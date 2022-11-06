@@ -13,9 +13,13 @@ class Admin::ContentsController < ApplicationController
   end
 
   def index
-    #時間できたら絞り込み機能つける
-    @contents = Content.page(params[:page])
-    @all_contents_count = @contents.count
+    @media_genres = MediaGenre.all
+    if params[:media_genre_id]
+      @media_genre = MediaGenre.find(params[:media_genre_id])
+      @contents = @media_genre.contents.page(params[:page])
+    else
+      @contents = Content.page(params[:page])
+    end
   end
 
   def show
@@ -43,6 +47,6 @@ class Admin::ContentsController < ApplicationController
   private
 
   def content_params
-    params.require(:content).permit(:title, :release_year)
+    params.require(:content).permit(:title, :release_year, { media_genre_ids: [] })
   end
 end

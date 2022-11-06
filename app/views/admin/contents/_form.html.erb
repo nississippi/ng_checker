@@ -20,7 +20,8 @@
 				<tr>
 					<td><%= f.label :media_genre_id, "媒体" %></td>
 					<td>
-						<%= f.collection_check_boxes(:media_genre_id, MediaGenre.all, :id, :media) do |media| %>
+						<%= f.collection_check_boxes(
+							:media_genre_ids, MediaGenre.all, :id, :media) do |media| %>
 				      <%= media.label do %>
 				        <%= media.check_box %>
 				        <%= media.text %>
