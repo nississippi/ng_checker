@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'searches/search'
-  end
   scope module: :public do
     root 'homes#top'
     resources :contents, only: [:index, :show]
@@ -11,6 +8,7 @@ Rails.application.routes.draw do
       post 'ng_answer/:vote', to: 'ng_answers#create', as: "ng_answer_vote"
       resources :comments, only: [:new, :create, :index, :edit, :update, :destroy]
     end
+    get 'search', to:'searches#search'
     #resources :ng_expressions, only: [:index, :show, :create] # TODO: ルーティング敵には上の方が正しいのでこの行は消すべき
 
   end
