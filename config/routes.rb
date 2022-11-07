@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'searches/search'
+  end
   scope module: :public do
     root 'homes#top'
     resources :contents, only: [:index, :show]
