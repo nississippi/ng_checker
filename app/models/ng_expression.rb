@@ -6,4 +6,13 @@ class NgExpression < ApplicationRecord
   has_many :contents, through: :ng_tagging_contents
 
   validates :ng_expression, presence: true
+
+  def self.looks(searches, words)
+    if searches == "perfect_match"
+      @ng_expression = NgExpression.where("name LIKE ?", "#{words}")
+    else
+      @ng_expression = NgExpression.where("name LIKE ?", "%#{words}%")
+    end
+end
+
 end
