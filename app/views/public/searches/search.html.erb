@@ -1,2 +1,9 @@
-<h1>Public::Searches#search</h1>
-<p>Find me in app/views/public/searches/search.html.erb</p>
+<% if @range == "NgExpression" %>
+    <% @ng_expressions.each do |ng| %>
+        <%= ng.ng_expression %>
+    <% end %>
+<% else %>
+    <% @contents.each do |content| %>
+        <%= content.title %>
+    <% end %>
+<% end %>

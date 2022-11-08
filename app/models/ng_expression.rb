@@ -9,10 +9,10 @@ class NgExpression < ApplicationRecord
 
   def self.looks(searches, words)
     if searches == "perfect_match"
-      @ng_expression = NgExpression.where("name LIKE ?", "#{words}")
+      @ng_expression = NgExpression.where("ng_expression LIKE ?", "#{words}")
     else
-      @ng_expression = NgExpression.where("name LIKE ?", "%#{words}%")
+      @ng_expression = NgExpression.where("ng_expression LIKE ?", "%#{words}%")
     end
-end
+  end
 
 end
