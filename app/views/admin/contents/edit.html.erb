@@ -1,2 +1,9 @@
-<h1>Admin::Contents#edit</h1>
-<p>Find me in app/views/admin/contents/edit.html.erb</p>
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-lg-6 col-md-8 col-sm-12">
+			<h5 class="text-center text-light"><span class="bg-primary">　コンテンツ編集　</span></h5>
+		  <%= render 'form', content: @content, url: admin_content_path(@content),
+		  title: 'コンテンツ編集',submit: '更新' %>
+		</div>
+	</div>
+</div>

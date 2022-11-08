@@ -40,7 +40,7 @@ class Admin::ContentsController < ApplicationController
   def update
     @content = Content.find(params[:id])
     if @content.update(content_params)
-      redirect_to admin_contents_path
+      redirect_to admin_content_path(@content)
     else
       render :edit
     end
