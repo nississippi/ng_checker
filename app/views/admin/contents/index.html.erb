@@ -32,7 +32,7 @@
 					<% @contents.each do |content| %>
 						<tr>
 							<td>
-								<%= link_to content.title, admin_contents_path, class: "underline" %>
+								<%= link_to content.title, admin_content_path(content), class: "underline" %>
 							</td>
 							<td class="text-center">
 								<%= link_to "編集", edit_admin_content_path(content), class: "btn btn-sm btn-success" %>

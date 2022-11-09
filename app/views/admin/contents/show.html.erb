@@ -1,2 +1,15 @@
-<h1>Admin::Contents#show</h1>
-<p>Find me in app/views/admin/contents/show.html.erb</p>
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-lg-6 col-md-8 col-sm-12">
+			<h5 class="text-center text-light"><span class="bg-primary">　コンテンツ詳細　</span></h5>
+			  <%= @content.title %>
+			  <%= @content.release_year %>
+			  <% @content.story_genres.each do |story_genre| %>
+			  	<%= story_genre.story %>
+			  <% end %>
+			  <% @content.media_genres.each do |media_genre| %>
+			  	<%= media_genre.media %>
+			  <% end %>
+		</div>
+	</div>
+</div>

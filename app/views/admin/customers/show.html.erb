@@ -1,2 +1,24 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-lg-6 col-md-8 col-sm-12">
+			<table class="table mt-3">
+				<thead>
+					<tr>
+						<th>ユーザー情報</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+						<tr>
+							<td>
+								<%= @customer.nickname %>
+							</td>
+							<td class="text-center">
+								<%= link_to "編集", edit_admin_customer_path(@customer), class: "btn btn-sm btn-success" %>
+							</td>
+						</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
