@@ -1,1 +1,6 @@
 <h1><%= @ng_expression.ng_expression %></h1>
+  <% if @ng_expression.bookmarked_by?(current_customer) %>
+    <td><%= link_to "ブックマークを外す", ng_expression_bookmarks_path(@ng_expression), method: :delete %></td>
+  <% else %>
+    <td><%= link_to "ブックマーク", ng_expression_bookmarks_path(@ng_expression), method: :ng_expression %></td>
+  <% end %>
