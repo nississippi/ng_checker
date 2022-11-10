@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :ng_expressions, only: [:index, :show, :create] do
       post 'ng_answer/:vote', to: 'ng_answers#create', as: "ng_answer_vote"
       resources :comments, only: [:new, :create, :index, :edit, :update, :destroy]
+      resource :bookmarks, only: [:create, :destroy]
     end
     get 'search', to:'searches#search'
     #resources :ng_expressions, only: [:index, :show, :create] # TODO: ルーティング敵には上の方が正しいのでこの行は消すべき
