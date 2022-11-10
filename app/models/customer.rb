@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :ng_answers, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
 
   validates :nickname, presence: true
