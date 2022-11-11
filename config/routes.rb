@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'customer/show'
+    get 'customer/edit'
+  end
   scope module: :public do
     root 'homes#top'
     resources :contents, only: [:index, :show]
