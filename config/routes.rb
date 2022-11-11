@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :public do
-    get 'customer/show'
-    get 'customer/edit'
+    get 'customers/show'
+    get 'customers/edit'
   end
+
   scope module: :public do
     root 'homes#top'
     resources :contents, only: [:index, :show]
@@ -13,7 +14,8 @@ Rails.application.routes.draw do
       resources :comments, only: [:new, :create, :index, :edit, :update, :destroy]
       resource :bookmarks, only: [:create, :destroy]
     end
-    get 'search', to:'searches#search'
+    get 'search', to: 'searches#search'
+    get 'customer/mypage', to: 'customers#show', as: 'customer_mypage'
     #resources :ng_expressions, only: [:index, :show, :create] # TODO: ルーティング敵には上の方が正しいのでこの行は消すべき
 
   end
