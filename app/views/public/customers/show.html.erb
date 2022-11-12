@@ -1,2 +1,17 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<%= @customer.nickname %>
+<%= @customer.email %>
+<%= link_to "編集", edit_customer_path(@customer) %>
+
+<table>
+  <thead>
+    <tr>
+      <th>NG表現</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookmarks.each do |bookmark| %>
+      <tr>
+        <td><%= bookmark.ng_expression.ng_expression %></td>
+    <% end %>
+  </tbody>
+</table>

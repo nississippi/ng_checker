@@ -1,6 +1,7 @@
 class Public::CustomersController < ApplicationController
   def show
     @customer = current_customer
+    @bookmarks = @customer.bookmarks
   end
 
   def edit
@@ -10,7 +11,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to customer_path(@customer)
+      redirect_to customer_mypage_path(@customer)
     else
       render :edit
     end

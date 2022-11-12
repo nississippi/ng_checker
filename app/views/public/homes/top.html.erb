@@ -1,2 +1,15 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-12 text-center">
+		  <h4>NGチェッカー</h4>
+		    <h5 class="mt-5">About</h5>
+		      <p>
+		        映画やドラマ、小説に苦手な表現(NG表現)が含まれていないか事前に確認するためのサイトです。<br>
+		        NG表現の一覧は
+		        <%= link_to "こちら", ng_expressions_path %><br>
+		        コンテンツの一覧は
+		        <%= link_to "こちら", contents_path %><br>
+		      </p>
+		</div>
+	</div>
+</div>
