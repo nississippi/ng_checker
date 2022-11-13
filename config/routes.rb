@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  namespace :admin do
+    get 'comments/index'
+  end
   scope module: :public do
     root 'homes#top'
     resources :contents, only: [:index, :show]
