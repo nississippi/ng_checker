@@ -1,15 +1,41 @@
 <div class="container mt-5">
+
+  <h1><%= @content.title %></h1>
+
 	<div class="row">
 		<div class="col-lg-6 col-md-8 col-sm-12">
-			<h5 class="text-center text-light"><span class="bg-primary">　コンテンツ詳細　</span></h5>
-			  <%= @content.title %>
-			  <%= @content.release_year %>
-			  <% @content.story_genres.each do |story_genre| %>
-			  	<%= story_genre.story %>
-			  <% end %>
-			  <% @content.media_genres.each do |media_genre| %>
-			  	<%= media_genre.media %>
-			  <% end %>
+			<table class="table mt-3">
+				<thead>
+					<tr>
+						<th>NG一覧</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @ng_expressions.each do |ng| %>
+						<tr>
+							<td>
+								<%= ng.ng_expression %>が
+							</td>
+							<!-- パスパラメータのng.idで親の引数、0で子の引数を指定している。パスパラメータ、クエリパラメータ(コロンいるやつ）の順に記述-->
+							<td>
+				        出てくる
+				        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
+					      /
+				        出てこない
+				        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
+					      /
+				        どちらとも言えない
+				        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<%= link_to "コメント一覧", admin_ng_expression_comments_path(ng.id, content_id: @content.id) %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>

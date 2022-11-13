@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-
-  namespace :admin do
-    get 'comments/index'
-  end
   scope module: :public do
     root 'homes#top'
     resources :contents, only: [:index, :show]
@@ -40,7 +36,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :ng_genres, except: [:new]
     resources :media_genres, except: [:new]
     resources :story_genres, except: [:new]
-    resources :ng_expressions, except: [:new]
+    resources :ng_expressions, except: [:new] do
+      resources :comments, only: [:index, :destroy]
+    end
     resources :customers, only: [:index, :show, :edit, :update]
     resources :contents
     resources :ng_tagging_contents, only: [:create, :destroy]
