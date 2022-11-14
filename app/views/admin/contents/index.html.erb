@@ -21,6 +21,12 @@
 				</ul>
 		</div>
 		<div class="col-lg-6 col-md-8 col-sm-12">
+			<% if params[:story_genre_id] %>
+				<h5><%= @story_genre.story %></h5>
+			<% end %>
+			<% if params[:media_genre_id] %>
+				<h5><%= @media_genre.media %></h5>
+			<% end %>
 			<table class="table mt-3">
 				<thead>
 					<tr>

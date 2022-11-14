@@ -15,18 +15,20 @@ class Admin::ContentsController < ApplicationController
   def index
     @story_genres = StoryGenre.all
     @media_genres = MediaGenre.all
-    if params[:story_genre_id]
+    if params[:story_genre_id] && params[:media_genre_id]
+      @story_genre = StoryGenre.find(params[:story_genre_id])
+      @media_genre = MediaGenre.find(params[:media_genre_id])
+      @contents = @story_genre.contents.where(media_genre_id: @media_genre.id).page(params[:page])
+    elsif params[:story_genre_id]
       @story_genre = StoryGenre.find(params[:story_genre_id])
       @contents = @story_genre.contents.page(params[:page])
-    else
-      @contents = Content.page(params[:page])
-    end
-    if params[:media_genre_id]
+    elsif params[:media_genre_id]
       @media_genre = MediaGenre.find(params[:media_genre_id])
       @contents = @media_genre.contents.page(params[:page])
     else
       @contents = Content.page(params[:page])
     end
+
   end
 
   def show
