@@ -12,6 +12,7 @@ class Public::NgExpressionsController < ApplicationController
 
   def show
     @ng_expression = NgExpression.find(params[:id])
+    @contents = Content.all
   end
 
   def create

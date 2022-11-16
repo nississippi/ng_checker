@@ -1,4 +1,43 @@
-<h1><%= @ng_expression.ng_expression %></h1>
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-lg-6 col-md-8 col-sm-12">
+		  <h5><%= @ng_expression.ng_expression %>は出てくる？</h5>
+			<table class="table mt-3">
+				<thead>
+					<tr>
+						<th>コンテンツ一覧</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @contents.each do |content| %>
+						<tr>
+							<td>
+								<%= link_to content.title, content_path(content), class: "underline" %>に
+							</td>
+							<td>
+					    	<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 0, content_id: content.id), method: :post do %>
+					        出てくる
+					        <%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count %>
+					      <% end %>
+					      /
+					      <%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 1, content_id: content.id), method: :post do %>
+					        出てこない
+					        <%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
+					      <% end %>
+					      /
+					      <%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 2, content_id: content.id), method: :post do %>
+					        どちらとも言えない
+					        <%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 2).count %>
+					      <% end %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
   <% if @ng_expression.bookmarked_by?(current_customer) %>
     <td><%= link_to "ブックマークを外す", ng_expression_bookmarks_path(@ng_expression), method: :delete %></td>
   <% else %>
