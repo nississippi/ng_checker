@@ -1,29 +1,31 @@
-<section class="inner">
-	<h2 class="section-ttl">ジャンル管理</h2>
-	<div class="mb3">
-		<h3>ジャンル新規登録</h3>
-  	<%= render 'form', ng_genre: @ng_genre, url: admin_ng_genres_path, submit: '登録' %>
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-lg-6 col-md-8 col-sm-12">
+			<h5 class="text-center text-light"><span class="bg-primary">　ジャンル新規登録　</span></h5>
+		  <%= render 'form', ng_genre: @ng_genre, url: admin_ng_genres_path, submit: '登録' %>
+		</div>
 	</div>
-	<div class="mb3">
-		<h3>ジャンル一覧</h3>
-		<table class="genre_info has_border">
-			<thead>
-				<tr>
-					<th>ジャンル名</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @ng_genres.each do |ng_genre| %>
+	<div class="row">
+		<div class="col-lg-6 col-md-8 col-sm-12">
+			<table class="genre_info has_border">
+				<thead>
 					<tr>
-						<td><%= link_to ng_genre.ng_genre,
-						admin_ng_expressions_path(ng_genre.id), class: "underline" %></td>
-						<td class="text-center">
-							<%= link_to "編集", edit_admin_ng_genre_path(ng_genre), class: "btn btn-success" %>
-							<%= link_to "削除", admin_ng_genre_path(ng_genre), method: :delete, class:"btn btn-sm btn-danger" %>
-						</td>
+						<th>ジャンル一覧</th>
 					</tr>
-				<% end %>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<% @ng_genres.each do |ng_genre| %>
+						<tr>
+							<td><%= link_to ng_genre.ng_genre,
+							admin_ng_expressions_path(ng_genre.id), class: "underline" %></td>
+							<td class="text-center">
+								<%= link_to "編集", edit_admin_ng_genre_path(ng_genre), class: "btn btn-sm btn-success" %>
+								<%= link_to "削除", admin_ng_genre_path(ng_genre), method: :delete, class:"btn btn-sm btn-danger" %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
 	</div>
-</section>
+</div>
