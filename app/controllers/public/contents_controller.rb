@@ -1,4 +1,15 @@
 class Public::ContentsController < ApplicationController
+
+  require 'themoviedb-api'
+  Tmdb::Api.key(ENV["TMDB_KEY"])
+  Tmdb::Api.language("ja")
+
+  def create
+    #送られてきた映画のタイトルがcontentモデルのタイトルカラムにあるか調べてなければデータ保存する
+    @content = Content.find_or_create_by(title: params[:name])
+    redirect_to content_path(@content)
+  end
+
   def index
     #時間できたら絞り込み機能つける
     @contents = Content.page(params[:page])

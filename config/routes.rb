@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root 'homes#top'
-    resources :contents, only: [:index, :show]
+    resources :contents, only: [:create, :index, :show]
     #/:何とかは全部パスパラメータ(vote)
     resources :ng_expressions, only: [:index, :show, :create] do
       post 'ng_answer/:vote', to: 'ng_answers#create', as: "ng_answer_vote"
