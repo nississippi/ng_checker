@@ -1,4 +1,11 @@
 class Public::SearchesController < ApplicationController
+
+
+  require 'themoviedb-api'
+  Tmdb::Api.key(ENV["TMDB_KEY"])
+  Tmdb::Api.language("ja")
+
+
   def search
     @range = params[:range]
 
