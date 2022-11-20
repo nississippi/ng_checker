@@ -6,7 +6,7 @@ class Public::ContentsController < ApplicationController
 
   def create
     #送られてきた映画のタイトルがcontentモデルのタイトルカラムにあるか調べてなければデータ保存する
-    @content = Content.find_or_create_by(title: params[:name])
+    @content = Content.find_or_create_by(title: params[:name], release_date: params[:release])
     redirect_to content_path(@content)
   end
 

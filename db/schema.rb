@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_10_134413) do
+ActiveRecord::Schema.define(version: 2022_11_20_104741) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2022_11_10_134413) do
 
   create_table "contents", force: :cascade do |t|
     t.string "title"
-    t.integer "release_year"
+    t.text "release_date"
     t.integer "story_genre_id"
     t.integer "media_genre_id"
     t.datetime "created_at", precision: 6, null: false
