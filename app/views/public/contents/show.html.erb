@@ -2,6 +2,12 @@
 
   <h1><%= @content.title %></h1>
   <h1><%= @content.release_date %></h1>
+  <% movieinfo = JSON.parse((Tmdb::Search.movie(@content.title)).to_json) %>
+	<% i = 0 %>
+	<%= movieinfo['table']['results'][i]['table']['overview'] %>
+	<% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
+     <p><%= image_tag 'https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "card-img" %></p>
+  <%end%>
 
 	<div class="row">
 		<div class="col-lg-6 col-md-8 col-sm-12">
