@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_20_104741) do
+ActiveRecord::Schema.define(version: 2022_11_21_144759) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2022_11_20_104741) do
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_draft", default: false, null: false
     t.index ["content_id"], name: "index_comments_on_content_id"
     t.index ["customer_id"], name: "index_comments_on_customer_id"
     t.index ["ng_expression_id"], name: "index_comments_on_ng_expression_id"
