@@ -19,6 +19,7 @@
 		</table>
 	</div>
 	<div class="text-center">
-		<%= f.submit submit, class: "btn btn-sm btn-primary" %>
+		<%= f.submit submit, :name => 'post', class: "btn btn-sm btn-primary" %>
+		<%= f.submit draft, :name => 'draft', class: "btn btn-sm btn-success" %>
 	</div>
 <% end %>
