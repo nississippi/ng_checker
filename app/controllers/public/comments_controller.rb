@@ -17,6 +17,8 @@ class Public::CommentsController < ApplicationController
         #クエリパラメータでcontent_idを渡す必要がある
         redirect_to ng_expression_comments_path(content_id: comment_params[:content_id])
       else
+        @content = Content.find(comment_params[:content_id])
+        @ng_expression = NgExpression.find(comment_params[:ng_expression_id])
         render :new, alert: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
       end
     # 下書きボタンを押下した場合
@@ -25,6 +27,8 @@ class Public::CommentsController < ApplicationController
         redirect_to ng_expression_comments_path(content_id: comment_params[:content_id]),
         notice: "コメントを下書き保存しました！"
       else
+        @content = Content.find(comment_params[:content_id])
+        @ng_expression = NgExpression.find(comment_params[:ng_expression_id])
         render :new, alert: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
       end
     end
