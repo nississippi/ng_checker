@@ -9,7 +9,7 @@
 		  <%= render 'form', comment: @comment,
 			  content: @content, ng_expression: @ng_expression,
 			  url: ng_expression_comment_path(@ng_expression.id, @comment.id),
-		  	title: 'コメント',submit: '更新' %>
+		  	title: 'コメント',submit: '更新', draft: '下書き保存' %>
 		</div>
 	</div>
 </div>
