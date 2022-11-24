@@ -1,17 +1,33 @@
-<%= @customer.nickname %>
-<%= @customer.email %>
-<%= link_to "編集", edit_customer_path(@customer) %>
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-lg-4 col-md-6 col-sm-8">
+		  <table class ="table mt-5">
+        <tbody>
+          <tr>
+            <th>ニックネーム</th>
+            <td><%= @customer.nickname %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @customer.email %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to "プロフィール編集", edit_customer_path(@customer) %>
 
-<table>
-  <thead>
-    <tr>
-      <th>NG表現</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @bookmarks.each do |bookmark| %>
-      <tr>
-        <td><%= bookmark.ng_expression.ng_expression %></td>
-    <% end %>
-  </tbody>
-</table>
+      <table class ="table mt-5">
+        <thead>
+          <tr>
+            <th>ブックマーク</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bookmarks.each do |bookmark| %>
+            <tr>
+              <td><%=link_to bookmark.ng_expression.ng_expression, ng_expression_path(bookmark.ng_expression.id) %></td>
+          <% end %>
+        </tbody>
+      </table>
+		</div>
+	</div>
+</div>

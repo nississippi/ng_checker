@@ -44,6 +44,10 @@
                       class: "btn btn-light btn-sm mx-3", style: "width: 90px;" %>
                   </li>
                   <li>
+                    <%= link_to "マイページ", customer_mypage_path,
+                      class: "btn btn-light btn-sm mx-3", style: "width: 90px;" %>
+                  </li>
+                  <li>
                     <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,
                       class: "btn btn-light btn-sm mx-3", style: "width: 90px;" %>
                   </li>
