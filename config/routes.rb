@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
     get 'search', to: 'searches#search'
     get 'customer/mypage', to: 'customers#show', as: 'customer_mypage'
-    resources :customers, only: [:edit]
+    resources :customers, only: [:edit, :update]
     #resources :ng_expressions, only: [:index, :show, :create] # TODO: ルーティング敵には上の方が正しいのでこの行は消すべき
 
   end
