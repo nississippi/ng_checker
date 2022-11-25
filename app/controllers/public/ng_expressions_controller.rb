@@ -1,5 +1,6 @@
 class Public::NgExpressionsController < ApplicationController
   def index
+    @ng_genres = NgGenre.all
     if params[:ng_genre_id]
       @ng_genre = NgGenre.find(params[:ng_genre_id])
       all_ng_expressions = @ng_genre.ng_expressions
