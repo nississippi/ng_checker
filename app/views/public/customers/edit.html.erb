@@ -11,18 +11,18 @@
     			</thead>
     			<tbody>
     			  <tr>
-    					<td>ユーザー名</td>
-    					<td>
-    					  <%= f.text_field :nickname, :placeholder =>"#{@customer.nickname}" %>
-    					</td>
-    				</tr>
-    				<tr>
-    					<td>メールアドレス</td>
-    					<td><%= f.text_field :email, :placeholder =>"#{@customer.email}" %></td>
-    				</tr>
-    				<tr>
-    					<td colspan="3"><%= f.submit "更新", class: "btn btn-primary" %></td>
-    				</tr>
+							<td>ユーザー名</td>
+							<td>
+							  <%= f.text_field :nickname, :placeholder =>"#{@customer.nickname}" %>
+							</td>
+						</tr>
+						<tr>
+							<td>メールアドレス</td>
+							<td><%= f.text_field :email, :placeholder =>"#{@customer.email}" %></td>
+						</tr>
+						<tr>
+							<td colspan="3"><%= f.submit "更新", class: "btn btn-primary" %></td>
+						</tr>
     			</tbody>
     		</table>
     	<% end %>
