@@ -1,16 +1,20 @@
 <div class="container mt-5">
-
-  <h1><%= @content.title %></h1>
-  <h1><%= @content.release_date %></h1>
-  <% movieinfo = JSON.parse((Tmdb::Search.movie(@content.title)).to_json) %>
-	<% i = 0 %>
-	<%= movieinfo['table']['results'][i]['table']['overview'] %>
-	<% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
-     <p><%= image_tag 'https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "card-img" %></p>
-  <%end%>
-
 	<div class="row">
-		<div class="col-lg-6 col-md-8 col-sm-12">
+		<div class="col-lg-8 col-md-8 col-sm-12">
+			<h3><%= @content.title %></h3>
+		  <h3><%= @content.release_date %></h3>
+		  <% movieinfo = JSON.parse((Tmdb::Search.movie(@content.title)).to_json) %>
+			<% i = 0 %>
+			<%= movieinfo['table']['results'][i]['table']['overview'] %>
+			<div class ="card" style="width: 18rem;">
+				<% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
+					<%= image_tag 'https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "card-img" %>
+			  <%end%>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-8 col-md-8 col-sm-12">
 			<table class="table mt-3">
 				<thead>
 					<tr>
