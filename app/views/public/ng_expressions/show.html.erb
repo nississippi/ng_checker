@@ -58,7 +58,6 @@
 					<%end%>
 
 					<% elsif params[:presence] == "false" %>
-							<%# binding.pry %>
 						<% @no.each do |n| %>
 							<% if n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count >= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count  %>
 								<tr>

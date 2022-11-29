@@ -13,8 +13,6 @@ class Public::NgExpressionsController < ApplicationController
 
   def show
     @ng_expression = NgExpression.find(params[:id])
-    #presence = @ng_expression.ng_answers.where(vote==0).count
-    #absence = @ng_expression.ng_answers.where(vote==1).count
       @yes = @ng_expression.ng_answers.where(vote: "yes").group(:content_id)
       @no = @ng_expression.ng_answers.where(vote: "no").group(:content_id)
     if params[:presence]
