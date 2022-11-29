@@ -10,7 +10,10 @@ class Public::NgAnswersController < ApplicationController
       current_ng_answer.destroy!
 
       if current_ng_answer.vote_before_type_cast == ng_answer_params[:vote].to_i
-        return redirect_to content_path(ng_answer_params[:content_id])
+        #returnで処理終了
+        #content_pathへのredirectだとNG詳細ページから投票しても映画詳細ページに飛んでしまうので記述変更
+        #return redirect_to content_path(ng_answer_params[:content_id])
+        return redirect_to request.referer
       end
     end
 
@@ -23,7 +26,8 @@ class Public::NgAnswersController < ApplicationController
     ng_answer.save
     #content = ng_answer.ng_expression.content
     # TODO refere リファラーというやつを使うと元居たページに戻れる
-    redirect_to content_path(ng_answer_params[:content_id])
+    #redirect_to content_path(ng_answer_params[:content_id])
+    redirect_to request.referer
   end
 
   private

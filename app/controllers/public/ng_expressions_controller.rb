@@ -13,23 +13,16 @@ class Public::NgExpressionsController < ApplicationController
 
   def show
     @ng_expression = NgExpression.find(params[:id])
-      @yes = @ng_expression.ng_answers.where(vote: "yes").group(:content_id)
-      @no = @ng_expression.ng_answers.where(vote: "no").group(:content_id)
-    if params[:presence]
-
-    elsif params[:presence]==false
-
-    else
-      @contents = Content.all
-    end
-
+    @yes = @ng_expression.ng_answers.where(vote: "yes").group(:content_id)
+    @no = @ng_expression.ng_answers.where(vote: "no").group(:content_id)
+    @contents = Content.all
   end
 
-  def create
-    ng_expression = NgExpression.new(ng_expression_params)
-    ng_expression.save
-    redirect_to content_path(content)
-  end
+  # def create
+  #   ng_expression = NgExpression.new(ng_expression_params)
+  #   ng_expression.save
+  #   redirect_to content_path(content)
+  # end
 
   private
 

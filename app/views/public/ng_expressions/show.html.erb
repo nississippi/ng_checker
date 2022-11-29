@@ -6,16 +6,16 @@
 				<% if @ng_expression.bookmarked_by?(current_customer) %>
 					<%= link_to "ブックマークを外す", ng_expression_bookmarks_path(@ng_expression), method: :delete %>
 				<% else %>
-					<%= link_to "ブックマーク済み", ng_expression_bookmarks_path(@ng_expression), method: :ng_expression %>
+					<%= link_to "ブックマークする", ng_expression_bookmarks_path(@ng_expression), method: :post %>
 				<% end %>
 			</p>
 			<p>
 				<%= link_to "出てくる", ng_expression_path(@ng_expression, presence: true) %><br>
-				「出てくる」の投票数＞「出てこない」の投票数を表示
+				「出てくる」の投票数≧「出てこない」の投票数を表示
 			</p>
 			<p>
 				<%= link_to "出てこない", ng_expression_path(@ng_expression, presence: false) %><br>
-				「出てくる」の投票数＜「出てこない」の投票数を表示
+				「出てくる」の投票数≦「出てこない」の投票数を表示
 			</p>
 			<p>
 				<%= link_to "すべて表示", ng_expression_path(@ng_expression) %>
@@ -31,7 +31,6 @@
 					<% if params[:presence] == "true" %>
 						<% @yes.each do |y| %>
 						<% if y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count >= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
-						<%# binding.pry %>
 							<tr>
 								<td>
 									<%= link_to y.content.title, content_path(y.content.id), class: "underline" %>に
