@@ -14,10 +14,6 @@ class Admin::NgGenresController < ApplicationController
     end
   end
 
-  def show
-    @ng_genre = NgGenre.find(params[:id])
-  end
-
   def edit
     @ng_genre = NgGenre.find(params[:id])
   end

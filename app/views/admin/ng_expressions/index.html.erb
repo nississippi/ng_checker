@@ -8,7 +8,10 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-2 col-md-2 col-sm-4">
-			<h5 class ="mt-4">ジャンル</h5>
+			<h5 class ="mt-4">
+				ジャンル
+				<%= link_to "+", admin_ng_genres_path, class: "btn  btn-sm btn-primary" %>
+			</h5>
 				<ul class="list-unstyled">
 					<li><%= link_to "すべて", admin_ng_expressions_path %></li>
 					<% @ng_genres.each do |ng_genre| %>

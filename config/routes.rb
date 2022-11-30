@@ -33,7 +33,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
 
   namespace :admin do
-    resources :ng_genres, except: [:new]
+    resources :ng_genres, except: [:new, :show]
     resources :media_genres, except: [:new]
     resources :story_genres, except: [:new]
     resources :ng_expressions, except: [:new] do
