@@ -15,4 +15,6 @@ class Content < ApplicationRecord
       @content = Content.where("title LIKE ?", "%#{words}%")
     end
   end
+
+  validates :title, presence: true
 end

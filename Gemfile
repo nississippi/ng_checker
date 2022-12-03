@@ -63,3 +63,4 @@ gem "enum_help"
 
 gem 'themoviedb-api'
 gem 'dotenv-rails'
+gem 'rails-i18n'
