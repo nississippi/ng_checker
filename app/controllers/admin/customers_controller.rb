@@ -1,5 +1,5 @@
 class Admin::CustomersController < ApplicationController
-  #before_action :authenticate_admin!
+  before_action :authenticate_admin!
   #@customer = Customer.find(params[:id])を何度も書かなくていいよう下記を定義
   before_action :ensure_customer, only: [:show, :edit, :update]
 
@@ -8,6 +8,7 @@ class Admin::CustomersController < ApplicationController
   end
 
   def show
+    @comments = @customer.comments
   end
 
   def edit

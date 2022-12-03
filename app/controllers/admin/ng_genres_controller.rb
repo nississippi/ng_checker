@@ -1,4 +1,6 @@
 class Admin::NgGenresController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @ng_genre = NgGenre.new
     @ng_genres = NgGenre.all

@@ -1,4 +1,6 @@
 class Admin::NgExpressionsController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @ng_expression = NgExpression.new
     @ng_genres = NgGenre.all

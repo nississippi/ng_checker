@@ -1,4 +1,6 @@
 class Admin::StoryGenresController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @story = StoryGenre.new
     @stories = StoryGenre.all

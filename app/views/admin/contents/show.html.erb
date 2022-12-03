@@ -7,14 +7,14 @@
 			<table class="table mt-3">
 				<thead>
 					<tr>
-						<th>NG一覧</th>
+						<th>NG表現</th>
 					</tr>
 				</thead>
 				<tbody>
 					<% @ng_expressions.each do |ng| %>
 						<tr>
 							<td>
-								<%= ng.ng_expression %>が
+								<%= ng.ng_expression %>
 							</td>
 							<!-- パスパラメータのng.idで親の引数、0で子の引数を指定している。パスパラメータ、クエリパラメータ(コロンいるやつ）の順に記述-->
 							<td>

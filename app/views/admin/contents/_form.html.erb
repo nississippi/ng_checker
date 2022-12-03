@@ -2,20 +2,14 @@
 	<%= render 'layouts/error_messages', resource: content %>
 	<div class="flex">
 		<table class="table">
-			<thead>
-				<tr>
-					<th><%= title %></th>
-					<th></th>
-				</tr>
-			</thead>
 			<tbody>
 				<tr>
-					<td><%= f.label :title, "コンテンツ" %></td>
-					<td><%= f.text_field :title %></td>
+					<td class="text-nowrap"><%= f.label :title, "タイトル" %></td>
+					<td><%= f.text_field :title, class: "form-control" %></td>
 				</tr>
 				<tr>
-					<td><%= f.label :release_date, "公開した" %></td>
-					<td><%= f.text_field :release_date %></td>
+					<td><%= f.label :release_date, "公開" %></td>
+					<td><%= f.text_field :release_date, class: "form-control" %></td>
 				</tr>
 				<tr>
 					<td><%= f.label :media_genre_id, "媒体" %></td>
@@ -30,7 +24,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td><%= f.label :story_genre_id, "作品傾向" %></td>
+					<td class="text-nowrap"><%= f.label :story_genre_id, "作品傾向" %></td>
 					<td>
 						<%= f.collection_check_boxes(
 							:story_genre_ids,StoryGenre.all, :id, :story) do |story| %>

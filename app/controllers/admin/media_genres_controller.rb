@@ -1,4 +1,6 @@
 class Admin::MediaGenresController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @media = MediaGenre.new
     @medias = MediaGenre.all

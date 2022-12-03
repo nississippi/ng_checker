@@ -6,6 +6,7 @@
 					<tr>
 						<th>ユーザー情報</th>
 						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -24,6 +25,34 @@
 							<%= link_to "編集", edit_admin_customer_path(@customer), class: "btn btn-sm btn-success" %>
 						</td>
 					</tr>
+				</tbody>
+			</table>
+			<h6><%= @customer.nickname %>の投稿一覧</h6>
+			<table class="table mt-3">
+				<thead>
+					<tr>
+						<th>コメント</th>
+						<th>作品名</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @comments.each do |comment| %>
+						<% unless comment.is_draft %>
+							<tr>
+								<td>
+									<%= comment.comment %>
+								</td>
+								<td>
+									<%= comment.content.title %>
+								</td>
+								<td>
+									<%= link_to "削除",
+											admin_ng_expression_comment_path(comment.ng_expression_id, comment.id), method: :delete,
+											class:"btn btn-sm btn-danger" %>
+								</td>
+							</tr>
+						<% end %>
+					<% end %>
 				</tbody>
 			</table>
 		</div>
