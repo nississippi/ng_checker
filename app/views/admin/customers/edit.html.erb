@@ -4,25 +4,21 @@
 		  <%= form_with model:@customer, url: admin_customer_path(@customer) do |f| %>
     		<%= render 'layouts/error_messages', resource: @customer %>
     		<table class="table mt-3">
-    			<thead>
-    				<th></th>
-    				<th></th>
-    				<th></th>
-    			</thead>
     			<tbody>
     			  <tr>
-							<td>ユーザー名</td>
+							<th>ユーザー名</th>
 							<td>
-							  <%= f.text_field :nickname, :placeholder =>"#{@customer.nickname}" %>
+							  <%= @customer.nickname %>
 							</td>
+							<td></td>
 						</tr>
 						<tr>
-							<td>ステータス</td>
+							<th>ステータス</th>
 							<td><%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効", class: "text-deleted" %></td>
 							<td><%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会済み", class: "text-invalid" %></td>
 						</tr>
 						<tr>
-							<td colspan="3"><%= f.submit "更新", class: "btn btn-primary" %></td>
+							<td class="text-center" colspan="3"><%= f.submit "更新", class: "btn btn-sm btn-primary" %></td>
 						</tr>
     			</tbody>
     		</table>

@@ -1,7 +1,10 @@
 <div class="container mt-5">
 	<div class="row">
 		<div class="col-lg-2 col-md-4 col-sm-12">
-			<h5 class="side-title">媒体</h5>
+			<h5>
+				媒体
+				<%= link_to "+", admin_media_genres_path, class: "btn btn-sm btn-white shadow py-0" %>
+			</h5>
 				<ul class="list-unstyled">
 					<li><%= link_to "すべて", admin_contents_path %></li>
 					<% @media_genres.each do |media_genre| %>
@@ -10,7 +13,10 @@
 						</li>
 					<% end %>
 				</ul>
-			<h5 class="side-title">作品傾向</h5>
+			<h5>
+				作品傾向
+				<%= link_to "+", admin_story_genres_path, class: "btn btn-sm btn-white shadow py-0" %>
+			</h5>
 				<ul class="list-unstyled">
 					<li><%= link_to "すべて", admin_contents_path %></li>
 					<% @story_genres.each do |story_genre| %>
