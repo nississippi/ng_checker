@@ -10,9 +10,8 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
 
     if @range == "NgExpression"
-      @ng_expressions = NgExpression.looks(params[:search], params[:word])
-    else
-      @contents = Content.looks(params[:search], params[:word])
+      @ng_expression = params[:looking_for]
+      @ng_expressions = NgExpression.looks(@ng_expression)
     end
   end
 end

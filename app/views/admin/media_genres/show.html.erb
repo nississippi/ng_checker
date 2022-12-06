@@ -1,2 +1,18 @@
-<h1>Admin::MediaGenres#show</h1>
-<p>Find me in app/views/admin/media_genres/show.html.erb</p>
+<div class="container mt-5">
+  <h5 class="text-center">「<%= @media.media %>」に属するコンテンツ</h5>
+	<div class="row">
+		<div class="offset-lg-2 col-lg-8 col-sm-12">
+			<table class="table mt-3">
+				<tbody class="text-center">
+					<% @media.contents.each do |content| %>
+						<tr>
+							<td>
+								<%= content.title %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

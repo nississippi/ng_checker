@@ -8,14 +8,10 @@ class NgExpression < ApplicationRecord
 
   validates :ng_expression, presence: true
 
-  def self.looks(searches, words)
-    if searches == "perfect_match"
-      @ng_expression = NgExpression.where("ng_expression LIKE ?", "#{words}")
-    else
-      @ng_expression = NgExpression.where("ng_expression LIKE ?", "%#{words}%")
-    end
+  def self.looks(words)
+    @ng_expression = NgExpression.where("ng_expression LIKE ?", "%#{words}%")
   end
-  
+
   def bookmarked_by?(customer)
     bookmarks.where(customer_id: customer).exists?
   end

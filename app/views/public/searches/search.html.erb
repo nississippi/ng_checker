@@ -3,9 +3,23 @@
 	<div class="row">
 		<div class="col-lg-6 col-md-8 col-sm-12">
       <% if @range == "NgExpression" %>
-        <% @ng_expressions.each do |ng| %>
-          <%= ng.ng_expression %>
-        <% end %>
+      「<%= @ng_expression %>」の検索結果
+        <table class="table mt-3">
+  				<thead>
+  					<tr>
+  						<th>NG表現一覧</th>
+  					</tr>
+  				</thead>
+  				<tbody>
+  					<% @ng_expressions.each do |ng| %>
+  						<tr>
+  							<td>
+  								<%= link_to ng.ng_expression, ng_expression_path(ng)%>
+  							</td>
+  						</tr>
+  					<% end %>
+  				</tbody>
+  			</table>
       <% else %>
           <%if params[:looking_for].present? %>
             <% movieinfo = JSON.parse((Tmdb::Search.movie(params[:looking_for])).to_json) %>

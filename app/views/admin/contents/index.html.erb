@@ -1,6 +1,6 @@
 <div class="container mt-5">
 	<div class="row">
-		<div class="col-lg-2 col-md-4 col-sm-12">
+		<div class="offset-lg-2 col-lg-2 col-sm-12">
 			<h5>
 				媒体
 				<%= link_to "+", admin_media_genres_path, class: "btn btn-sm btn-white shadow py-0" %>
@@ -26,7 +26,7 @@
 					<% end %>
 				</ul>
 		</div>
-		<div class="col-lg-6 col-md-8 col-sm-12">
+		<div class="col-lg-6 col-sm-12">
 			<% if params[:story_genre_id] %>
 				<h5><%= @story_genre.story %></h5>
 			<% elsif params[:media_genre_id] %>

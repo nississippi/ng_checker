@@ -8,13 +8,6 @@ class Content < ApplicationRecord
   has_many :story_tag_contents, dependent: :destroy
   has_many :story_genres, through: :story_tag_contents
 
-  def self.looks(searches, words)
-    if searches == "perfect_match"
-      @content = Content.where("title LIKE ?", "#{words}")
-    else
-      @content = Content.where("title LIKE ?", "%#{words}%")
-    end
-  end
 
   validates :title, presence: true
 end

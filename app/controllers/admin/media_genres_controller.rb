@@ -26,7 +26,7 @@ class Admin::MediaGenresController < ApplicationController
 
   def update
     @media = MediaGenre.find(params[:id])
-    @media.update(media_params) ? (redirect_to admin_medias_path) : (render :edit)
+    @media.update(media_params) ? (redirect_to admin_media_genres_path) : (render :edit)
   end
 
   def destroy
