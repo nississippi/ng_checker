@@ -16,7 +16,7 @@
 				<tr>
 					<td><%= f.label :ng_genre_id, "ジャンル" %></td>
 					<td>
-						<%= f.collection_select :ng_genre_id, NgGenre.all, :id, :ng_genre %>
+						<%= f.collection_select :ng_genre_id, NgGenre.all, :id, :ng_genre, :prompt => "選択してください" %>
 					</td>
 				</tr>
 			</tbody>

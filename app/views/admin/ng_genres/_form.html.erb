@@ -1,6 +1,14 @@
 <%= form_with model:ng_genre, url: url do |f| %>
 	<%= render 'layouts/error_messages', resource: ng_genre %>
-	<%= f.label :ng_genre, "NGジャンル" %>
-	<%= f.text_field :ng_genre %>
-	<%= f.submit submit, class: "btn btn-primary" %>
+	<table class="table table-borderless ">
+		<tbody>
+			<tr>
+				<th><%= f.label :ng_genre, "NGジャンル" %></th>
+				<td class="d-flex align-items-center">
+					<%= f.text_field :ng_genre %>
+					<%= f.submit submit, class: "ml-2 btn btn-sm btn-primary" %>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 <% end %>

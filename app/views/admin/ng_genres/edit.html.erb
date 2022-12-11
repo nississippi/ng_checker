@@ -1,2 +1,9 @@
-<h1>Admin::NgGenres#edit</h1>
-<p>Find me in app/views/admin/ng_genres/edit.html.erb</p>
+<div class="container mt-5">
+	<div class="row">
+		<div class="offset-lg-2 col-lg-8 col-sm-12">
+			<h5 class="text-center text-light"><span class="bg-primary">　NGジャンル編集　</span></h2>
+		  <%= render 'form', ng_genre: @ng_genre,
+		  url: admin_ng_genre_path(@ng_genre), title: 'NGジャンル編集',submit: '更新' %>
+		</div>
+	</div>
+</div>

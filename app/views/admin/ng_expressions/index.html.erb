@@ -26,6 +26,7 @@
 				<thead>
 					<tr>
 						<th>NG表現一覧</th>
+						<th>ジャンル</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -33,7 +34,10 @@
 					<% @ng_expressions.each do |ng| %>
 						<tr>
 							<td>
-								<%= link_to ng.ng_expression, admin_ng_expression_path(ng), class: "underline" %>
+								<%= link_to ng.ng_expression, admin_ng_expression_path(ng) %>
+							</td>
+							<td>
+								<%= ng.ng_genre.ng_genre %>
 							</td>
 							<td class="text-center">
 								<%= link_to "編集", edit_admin_ng_expression_path(ng), class: "btn btn-sm btn-success" %>

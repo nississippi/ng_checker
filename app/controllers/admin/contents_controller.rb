@@ -1,9 +1,9 @@
 class Admin::ContentsController < ApplicationController
   before_action :authenticate_admin!
   
-  def new
-    @content = Content.new
-  end
+  # def new
+  #   @content = Content.new
+  # end
 
   def create
     @content = Content.new(content_params)

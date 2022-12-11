@@ -15,6 +15,7 @@ class Admin::NgExpressionsController < ApplicationController
   end
 
   def create
+    @ng_genres = NgGenre.all
     @ng_expression = NgExpression.new(ng_expression_params)
     if @ng_expression.save
       redirect_to admin_ng_expressions_path
