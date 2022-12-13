@@ -1,4 +1,6 @@
 class Public::CommentsController < ApplicationController
+  before_action :authenticate_customer!, except: [:index]
+
   def new
     @comment = Comment.new
     @ng_expression = NgExpression.find(params[:ng_expression_id])

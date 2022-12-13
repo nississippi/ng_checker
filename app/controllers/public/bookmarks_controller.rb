@@ -1,4 +1,6 @@
 class Public::BookmarksController < ApplicationController
+  before_action :authenticate_customer!
+  
   def create
     @ng_expression = NgExpression.find(params[:ng_expression_id])
     bookmark = @ng_expression.bookmarks.new(customer_id: current_customer.id)

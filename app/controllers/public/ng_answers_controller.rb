@@ -1,4 +1,5 @@
 class Public::NgAnswersController < ApplicationController
+  before_action :authenticate_customer!
 
   def create
     current_ng_answer = NgAnswer.find_by(
