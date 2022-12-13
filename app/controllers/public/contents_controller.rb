@@ -6,6 +6,7 @@ class Public::ContentsController < ApplicationController
 
   def create
     #送られてきた映画のタイトルがcontentモデルのタイトルカラムにあるか調べてなければデータ保存する
+    #下記のままでは部分一致idが一番若いものを登録してしまう
     @content = Content.find_or_create_by(title: params[:name], release_date: params[:release])
     redirect_to content_path(@content)
   end

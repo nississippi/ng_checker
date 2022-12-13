@@ -16,9 +16,10 @@ class Admin::MediaGenresController < ApplicationController
     end
   end
 
-  def show
-    @media = MediaGenre.find(params[:id])
-  end
+  # def show
+  #   @media = MediaGenre.find(params[:id])
+  #   redirect_to admin_media_genre_path(@media)
+  # end
 
   def edit
     @media = MediaGenre.find(params[:id])

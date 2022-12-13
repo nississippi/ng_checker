@@ -1,9 +1,8 @@
 <div class="container mt-5">
-
 	<div class="row">
-		<div class="col-lg-6 col-md-8 col-sm-12">
-      <% if @range == "NgExpression" %>
-      「<%= @ng_expression %>」の検索結果
+    <% if @range == "NgExpression" %>
+		  <div class="col-lg-6 col-md-8 col-sm-12">
+        「<%= @ng_expression %>」の検索結果
         <table class="table mt-3">
   				<thead>
   					<tr>
@@ -20,73 +19,61 @@
   					<% end %>
   				</tbody>
   			</table>
-      <% else %>
-          <%if params[:looking_for].present? %>
-            <% movieinfo = JSON.parse((Tmdb::Search.movie(params[:looking_for])).to_json) %>
-              <h2><%= params[:looking_for] %>の検索結果</h2>
-              =====================
-                <% i = 0 %>
-                  <% while i < movieinfo['table']['results'].count %>
-                    <div class="card">
-                      <div class="card-upperinfo">
-                          <%if movieinfo['table']['results'][i]['table']['title'].present?%>
-                          <!-- ()の中身はコントローラに送るパラメータ -->
-                            <% if movieinfo['table']['results'][i]['table']['release_date'].present? %>
-                              <h3>
-                                <%= link_to movieinfo['table']['results'][i]['table']['title'],
-                                  contents_path(
-                                    name: movieinfo['table']['results'][i]['table']['title'],
-                                    release: movieinfo['table']['results'][i]['table']['release_date']
-                                    ), method: :post %>
-                              </h3>
-                            <% else %>
-                              <h3>
-                                <%= link_to movieinfo['table']['results'][i]['table']['title'],
-                                  contents_path(name: movieinfo['table']['results'][i]['table']['title']), method: :post %>
-                              </h3>
-                            <%end%>
-                          <%end%>
-                          <% if movieinfo['table']['results'][i]['table']['release_date'].present? %>
-                            <p class="release-date"><%= movieinfo['table']['results'][i]['table']['release_date'] %></p>
-                          <%end%>
-                      </div>
+  		</div>
+    <% else %>
+      <div class = "col-lg-12">
+        <%if params[:looking_for].present? %>
+          <% movieinfo = JSON.parse((Tmdb::Search.movie(params[:looking_for])).to_json) %>
 
+          <h2><%= params[:looking_for] %>の検索結果</h2>
+          =====================
 
-                      <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
-                          <p><%= image_tag 'https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "card-img" %></p>
-                      <%end%>
+          <div class = "col-lg-12">
+            <% i = 0 %>
+            <% while i < movieinfo['table']['results'].count %>
+              <div class="card" style="height: 200px;">
+                <div class="row no-gutters">
+                <%if movieinfo['table']['results'][i]['table']['title'].present?%>
+                  <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
+                    <div class="col-2">
+                      <%= image_tag 'https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "card-img" %>
                     </div>
-                    <% i += 1%>
                   <%end%>
-          <%else%>
-              <%# 検索されていない時にトレンドコンテンツを表示する %>
-              <h2>本日の世界のトレンド</h2>
-              ====================
-              <% movieinfo = JSON.parse((Tmdb::Movie.popular).to_json) %>
-              <% i = 0 %>
-              <div class="card-wrapper">
-                  <% while i < movieinfo['table']['results'].count %>
-                      <div class="card">
-                          <div class="card-upperinfo">
-                              <%if movieinfo['table']['results'][i]['table']['title'].present?%>
-                                  <h3><%= link_to movieinfo['table']['results'][i]['table']['title'], detail_path(movieinfo['table']['results'][i]['table']['id'])%></h3>
-                              <%end%>
+                  <div class="col-10">
+                    <!--()の中身はコントローラに送るパラメータ -->
+                    <% if movieinfo['table']['results'][i]['table']['release_date'].present? %>
+                      <h5 class="card-title">
+                        <%= link_to movieinfo['table']['results'][i]['table']['title'],
+                          contents_path(
+                            name: movieinfo['table']['results'][i]['table']['title'],
+                            release: movieinfo['table']['results'][i]['table']['release_date']
+                            ), method: :post %>
+                      </h5>
+                    <% else %>
+                      <p>
+                        <%= link_to movieinfo['table']['results'][i]['table']['title'],
+                          contents_path(name: movieinfo['table']['results'][i]['table']['title']), method: :post %>
+                      </p>
+                    <% end %>
+                    <% if movieinfo['table']['results'][i]['table']['release_date'].present? %>
+                      <p class="card-text"><small class="text-muted"><%= movieinfo['table']['results'][i]['table']['release_date'] %></small></p>
+                    <%end%>
 
-                              <% if movieinfo['table']['results'][i]['table']['release_date'].present? %>
-                                  <p class="release-date"><%= movieinfo['table']['results'][i]['table']['release_date'] %></p>
-                              <%end%>
-                          </div>
+                    <% if movieinfo['table']['results'][i]['table']['overview'].present? %>
+                      <p class="card-text"><%= movieinfo['table']['results'][i]['table']['overview'] %></p>
+                    <%end%>
+                  </div>
 
-                          <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
-                              <p><%= image_tag 'https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "card-img" %></p>
-                          <%end%>
-                      </div>
+                <% end %>
 
-                      <% i += 1%>
-                  <%end%>
+                </div>
               </div>
-          <%end%>
-      <% end %>
-    </div>
+
+              <% i += 1%>
+            <%end%>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
 	</div>
 </div>

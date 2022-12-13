@@ -34,13 +34,13 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   namespace :admin do
     resources :ng_genres, except: [:new, :show]
-    resources :media_genres, except: [:new]
-    resources :story_genres, except: [:new]
+    resources :media_genres, except: [:new, :show]
+    resources :story_genres, except: [:new, :show]
     resources :ng_expressions, except: [:new] do
       resources :comments, only: [:index, :destroy]
     end
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :contents
+    resources :contents, except: [:new]
     resources :ng_tagging_contents, only: [:create, :destroy]
     resources :media_tag_contents, only: [:create, :destroy]
     resources :story_tag_contents, only: [:create, :destroy]

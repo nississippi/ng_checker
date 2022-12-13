@@ -16,9 +16,9 @@ class Admin::StoryGenresController < ApplicationController
     end
   end
 
-  def show
-    @story = StoryGenre.find(params[:id])
-  end
+  # def show
+  #   @story = StoryGenre.find(params[:id])
+  # end
 
   def edit
     @story = StoryGenre.find(params[:id])
@@ -26,7 +26,7 @@ class Admin::StoryGenresController < ApplicationController
 
   def update
     @story = StoryGenre.find(params[:id])
-    @story.update(story_params) ? (redirect_to admin_stories_path) : (render :edit)
+    @story.update(story_params) ? (redirect_to admin_story_genres_path) : (render :edit)
   end
 
   def destroy
