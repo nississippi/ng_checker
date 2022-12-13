@@ -46,7 +46,8 @@
                         <%= link_to movieinfo['table']['results'][i]['table']['title'],
                           contents_path(
                             name: movieinfo['table']['results'][i]['table']['title'],
-                            release: movieinfo['table']['results'][i]['table']['release_date']
+                            release: movieinfo['table']['results'][i]['table']['release_date'],
+                            tmdb_id: movieinfo['table']['results'][i]['table']['id']
                             ), method: :post %>
                       </h5>
                     <% else %>

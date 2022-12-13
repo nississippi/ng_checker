@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_02_141553) do
+ActiveRecord::Schema.define(version: 2022_12_13_104607) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2022_12_02_141553) do
     t.integer "media_genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "tmdb_id"
     t.index ["media_genre_id"], name: "index_contents_on_media_genre_id"
     t.index ["story_genre_id"], name: "index_contents_on_story_genre_id"
   end
