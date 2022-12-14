@@ -20,7 +20,7 @@
 									<% if !comment.is_draft %>
 										<p><%= comment.comment %></p>
 									<% else %>
-										<p class ="text-secondary"><%= comment.comment %>(下書き)</p>
+										<p class ="text-secondary"><small><%= comment.comment %>(下書き)</small></p>
 									<% end %>
 								</td>
 								<td>
@@ -38,6 +38,7 @@
 					<% end %>
 				</tbody>
 			</table>
+			<%= link_to "コメント追加に戻る", new_ng_expression_comment_path(@ng_expression.id, content_id: @content.id) %>
 		</div>
 	</div>
 </div>

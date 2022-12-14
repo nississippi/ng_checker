@@ -33,20 +33,31 @@
 						<% if y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count >= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
 							<tr>
 								<td>
-									<%= link_to y.content.title, content_path(y.content.id), class: "underline" %>に
+									<%= link_to y.content.title, content_path(y.content.id) %>に
 								</td>
 								<td>
-									<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 0, content_id: y.content.id), method: :post do %>
+									<% if customer_signed_in? %>
+										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 0, content_id: y.content.id), method: :post do %>
+											出てくる
+											<%= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count %>
+										<% end %>
+										/
+										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 1, content_id: y.content.id), method: :post do %>
+											出てこない
+											<%= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
+										<% end %>
+										/
+										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 2, content_id: y.content.id), method: :post do %>
+											どちらとも言えない
+											<%= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 2).count %>
+										<% end %>
+									<% else %>
 										出てくる
 										<%= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count %>
-									<% end %>
-									/
-									<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 1, content_id: y.content.id), method: :post do %>
+										/
 										出てこない
 										<%= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
-									<% end %>
-									/
-									<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 2, content_id: y.content.id), method: :post do %>
+										/
 										どちらとも言えない
 										<%= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 2).count %>
 									<% end %>
@@ -61,46 +72,67 @@
 							<% if n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count >= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count  %>
 								<tr>
 									<td>
-										<%= link_to n.content.title, content_path(n.content.id), class: "underline" %>に
+										<%= link_to n.content.title, content_path(n.content.id) %>に
 									</td>
 									<td>
-										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 0, content_id: n.content.id), method: :post do %>
+										<% if customer_signed_in? %>
+											<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 0, content_id: n.content.id), method: :post do %>
+												出てくる
+												<%= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count %>
+											<% end %>
+											/
+											<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 1, content_id: n.content.id), method: :post do %>
+												出てこない
+												<%= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
+											<% end %>
+											/
+											<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 2, content_id: n.content.id), method: :post do %>
+												どちらとも言えない
+												<%= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 2).count %>
+											<% end %>
+										<% else %>
 											出てくる
 											<%= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count %>
-										<% end %>
-										/
-										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 1, content_id: n.content.id), method: :post do %>
+											/
 											出てこない
 											<%= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
-										<% end %>
-										/
-										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 2, content_id: n.content.id), method: :post do %>
+											/
 											どちらとも言えない
 											<%= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 2).count %>
 										<% end %>
 									</td>
 								</tr>
-							<% else %>
 							<% end %>
 						<% end %>
 					<% else %>
 						<% @contents.each do |content| %>
 							<tr>
 								<td>
-									<%= link_to content.title, content_path(content), class: "underline" %>に
+									<%= link_to content.title, content_path(content) %>に
 								</td>
 								<td>
-									<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 0, content_id: content.id), method: :post do %>
+									<% if customer_signed_in? %>
+										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 0, content_id: content.id), method: :post do %>
+											出てくる
+											<%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count %>
+										<% end %>
+										/
+										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 1, content_id: content.id), method: :post do %>
+											出てこない
+											<%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
+										<% end %>
+										/
+										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 2, content_id: content.id), method: :post do %>
+											どちらとも言えない
+											<%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 2).count %>
+										<% end %>
+									<% else %>
 										出てくる
 										<%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count %>
-									<% end %>
-									/
-									<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 1, content_id: content.id), method: :post do %>
+										/
 										出てこない
 										<%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
-									<% end %>
-									/
-									<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 2, content_id: content.id), method: :post do %>
+										/
 										どちらとも言えない
 										<%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 2).count %>
 									<% end %>

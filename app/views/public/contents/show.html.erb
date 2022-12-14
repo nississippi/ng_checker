@@ -1,6 +1,6 @@
 <div class="container mt-5">
 	<div class="row">
-		<div class="col-lg-4 col-md-4 col-sm-12">
+		<div class="col-lg-2 col-md-4 col-sm-12">
 
 		  <%# movieinfo = JSON.parse((Tmdb::Search.movie(@content.title)).to_json) %>
 		  <%# movieinfo = JSON.parse((Tmdb::Movie.detail(@content.tmdb_id, language: 'jp')).to_json) %>
@@ -10,8 +10,8 @@
 			<% end %>
 		</div>
 		<div class="col-lg-8 col-md-8 col-sm-12">
-			<h3><%= @content.title %></h3>
-			<h3><%= @content.release_date %></h3>
+			<h5><%= @content.title %></h5>
+			<h5 class="text-muted"><small><%= @content.release_date %></small></h5>
 			<%= movieinfo['table']['overview'] %>
 		</div>
 	</div>
@@ -27,33 +27,33 @@
 					<% @ng_expressions.each do |ng| %>
 						<tr>
 							<td>
-								<%= ng.ng_expression %>が
+								<%= ng.ng_expression %>は出てくる？
 							</td>
 							<!-- パスパラメータのng.idで親の引数、0で子の引数を指定している。パスパラメータ、クエリパラメータ(コロンいるやつ）の順に記述-->
 							<td>
 								<% if customer_signed_in? %>
 									<%= link_to ng_expression_ng_answer_vote_path(ng.id, 0, content_id: @content.id), method: :post do %>
-										出てくる
+										◯
 										<%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
 									<% end %>
 									/
 									<%= link_to ng_expression_ng_answer_vote_path(ng.id, 1, content_id: @content.id), method: :post do %>
-										出てこない
+										×
 										<%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
 									<% end %>
 									/
 									<%= link_to ng_expression_ng_answer_vote_path(ng.id, 2, content_id: @content.id), method: :post do %>
-										どちらとも言えない
+										△
 										<%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
 									<% end %>
 								<% else %>
-									出てくる
+									◯
 									<%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
 									/
-									出てこない
+									×
 									<%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
 									/
-									どちらとも言えない
+									△
 									<%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
 								<% end %>
 							</td>
