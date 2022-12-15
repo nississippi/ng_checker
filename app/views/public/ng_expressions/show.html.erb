@@ -10,60 +10,60 @@
 				<% end %>
 			</p>
 			<p>
-				<%= link_to "出てくる", ng_expression_path(@ng_expression, presence: true) %><br>
-				「出てくる」の投票数≧「出てこない」の投票数を表示
+				<%= link_to "「◯」の投票数≧「×」の投票数を表示", ng_expression_path(@ng_expression, presence: true) %><br>
 			</p>
 			<p>
-				<%= link_to "出てこない", ng_expression_path(@ng_expression, presence: false) %><br>
-				「出てくる」の投票数≦「出てこない」の投票数を表示
+				<%= link_to "「◯」の投票数≦「×」の投票数を表示", ng_expression_path(@ng_expression, presence: false) %><br>
 			</p>
 			<p>
 				<%= link_to "すべて表示", ng_expression_path(@ng_expression) %>
 			</p>
 			<table class="table mt-3">
-				<thead>
-					<tr>
-						<th>コンテンツ一覧</th>
-						<th></th>
-					</tr>
-				</thead>
 				<tbody>
 					<% if params[:presence] == "true" %>
 						<% @yes.each do |y| %>
 						<% if y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count >= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
 							<tr>
 								<td>
-									<%= link_to y.content.title, content_path(y.content.id) %>に
+									<%= link_to y.content.title, content_path(y.content.id) %>に<%= @ng_expression.ng_expression %>は出てくる？
 								</td>
 								<td>
 									<% if customer_signed_in? %>
 										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 0, content_id: y.content.id), method: :post do %>
-											出てくる
+											◯
 											<%= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count %>
 										<% end %>
 										/
 										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 1, content_id: y.content.id), method: :post do %>
-											出てこない
+											×
 											<%= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
 										<% end %>
 										/
 										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 2, content_id: y.content.id), method: :post do %>
-											どちらとも言えない
+											△
 											<%= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 2).count %>
 										<% end %>
 									<% else %>
-										出てくる
+										◯
 										<%= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count %>
 										/
-										出てこない
+										×
 										<%= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
 										/
-										どちらとも言えない
+										△
 										<%= y.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 2).count %>
 									<% end %>
 								</td>
 							</tr>
-						<% else %>
+							<tr>
+								<td>
+									<% if customer_signed_in? %>
+										<%= link_to "コメント追加", new_ng_expression_comment_path(@ng_expression.id, content_id: y.content.id) %> /
+									<% end %>
+									<%= link_to "コメント一覧", ng_expression_comments_path(@ng_expression.id, content_id: y.content.id) %>
+								</td>
+								<td></td>
+							</tr>
 						<%end%>
 					<%end%>
 
@@ -72,35 +72,44 @@
 							<% if n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count >= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count  %>
 								<tr>
 									<td>
-										<%= link_to n.content.title, content_path(n.content.id) %>に
+										<%= link_to n.content.title, content_path(n.content.id) %>に<%= @ng_expression.ng_expression %>は出てくる？
 									</td>
 									<td>
 										<% if customer_signed_in? %>
 											<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 0, content_id: n.content.id), method: :post do %>
-												出てくる
+												◯
 												<%= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count %>
 											<% end %>
 											/
 											<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 1, content_id: n.content.id), method: :post do %>
-												出てこない
+												×
 												<%= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
 											<% end %>
 											/
 											<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 2, content_id: n.content.id), method: :post do %>
-												どちらとも言えない
+												△
 												<%= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 2).count %>
 											<% end %>
 										<% else %>
-											出てくる
+											◯
 											<%= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count %>
 											/
-											出てこない
+											×
 											<%= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
 											/
-											どちらとも言えない
+											△
 											<%= n.content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 2).count %>
 										<% end %>
 									</td>
+								</tr>
+								<tr>
+									<td>
+										<% if customer_signed_in? %>
+											<%= link_to "コメント追加", new_ng_expression_comment_path(@ng_expression.id, content_id: n.content.id) %> /
+										<% end %>
+										<%= link_to "コメント一覧", ng_expression_comments_path(@ng_expression.id, content_id: n.content.id) %>
+									</td>
+									<td></td>
 								</tr>
 							<% end %>
 						<% end %>
@@ -108,35 +117,44 @@
 						<% @contents.each do |content| %>
 							<tr>
 								<td>
-									<%= link_to content.title, content_path(content) %>に
+									<%= link_to content.title, content_path(content) %>に<%= @ng_expression.ng_expression %>は出てくる？
 								</td>
 								<td>
 									<% if customer_signed_in? %>
 										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 0, content_id: content.id), method: :post do %>
-											出てくる
+											◯
 											<%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count %>
 										<% end %>
 										/
 										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 1, content_id: content.id), method: :post do %>
-											出てこない
+											×
 											<%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
 										<% end %>
 										/
 										<%= link_to ng_expression_ng_answer_vote_path(@ng_expression.id, 2, content_id: content.id), method: :post do %>
-											どちらとも言えない
+											△
 											<%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 2).count %>
 										<% end %>
 									<% else %>
-										出てくる
+										◯
 										<%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 0).count %>
 										/
-										出てこない
+										×
 										<%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 1).count %>
 										/
-										どちらとも言えない
+										△
 										<%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 2).count %>
 									<% end %>
 								</td>
+							</tr>
+							<tr>
+								<td>
+									<% if customer_signed_in? %>
+										<%= link_to "コメント追加", new_ng_expression_comment_path(@ng_expression.id, content_id: content.id) %> /
+									<% end %>
+									<%= link_to "コメント一覧", ng_expression_comments_path(@ng_expression.id, content_id: content.id) %>
+								</td>
+								<td></td>
 							</tr>
 						<% end %>
 					<% end %>

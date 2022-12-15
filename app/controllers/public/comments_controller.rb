@@ -51,6 +51,8 @@ class Public::CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
+    @content = Content.find(@comment.content_id)
+    @ng_expression = NgExpression.find(@comment.ng_expression_id)
     if @comment.update(comment_params)
       redirect_to ng_expression_comments_path(content_id: comment_params[:content_id])
     else
