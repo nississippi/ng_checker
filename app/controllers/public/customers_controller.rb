@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def show
     @customer = current_customer
     @bookmarks = @customer.bookmarks
@@ -18,6 +18,17 @@ class Public::CustomersController < ApplicationController
       render :edit
     end
   end
+
+  def unsubscribe
+  end
+
+  def withdrawal
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
+
 
   private
 

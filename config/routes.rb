@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     get 'search', to: 'searches#search'
     get 'customer/mypage', to: 'customers#show', as: 'customer_mypage'
     resources :customers, only: [:edit, :update]
+      # 退会確認画面
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'customer_unsubscribe'
+    # 論理削除用のルーティング
+    patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'customer_withdrawal'
     #resources :ng_expressions, only: [:index, :show, :create] # TODO: ルーティング敵には上の方が正しいのでこの行は消すべき
 
   end
