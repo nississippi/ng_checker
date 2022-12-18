@@ -1,24 +1,11 @@
 <%= form_with model:comment, url: url do |f| %>
 	<%= render 'layouts/error_messages', resource: comment %>
-	<div class="flex">
-		<table class="table">
-			<thead>
-				<tr>
-					<th><%= title %></th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><%= f.label :comment, "コメント" %></td>
-					<td><%= f.text_area :comment %></td>
-					<%= f.hidden_field :content_id, value: content.id %>
-					<%= f.hidden_field :ng_expression_id, value: ng_expression.id %>
-				</tr>
-			</tbody>
-		</table>
-	</div>
 	<div class="text-center">
+		<%= f.text_area :comment, rows: 8, class: "form-control" %></td>
+		<%= f.hidden_field :content_id, value: content.id %>
+		<%= f.hidden_field :ng_expression_id, value: ng_expression.id %>
+	</div>
+	<div class="text-center mt-2">
 		<%= f.submit submit, :name => 'post', class: "btn btn-sm btn-primary" %>
 		<%= f.submit draft, :name => 'draft', class: "btn btn-sm btn-success" %>
 	</div>

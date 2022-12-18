@@ -33,6 +33,9 @@ class Admin::NgExpressionsController < ApplicationController
 
   def show
     @ng_expression = NgExpression.find(params[:id])
+    @yes = @ng_expression.ng_answers.where(vote: "yes").group(:content_id)
+    @no = @ng_expression.ng_answers.where(vote: "no").group(:content_id)
+    @contents = Content.all
   end
 
   def edit

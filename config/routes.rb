@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     #resources :ng_expressions, only: [:index, :show, :create] # TODO: ルーティング敵には上の方が正しいのでこの行は消すべき
 
   end
-# 顧客用
+# ユーザー用
 # URL /customers/sign_in ...
 devise_for :customers, controllers: {
   registrations: "public/registrations",

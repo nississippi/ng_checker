@@ -3,6 +3,7 @@
 		<div class="offset-lg-2 col-lg-8 col-sm-12">
 			<h5 class="text-center text-light"><span class="bg-primary">　コンテンツ編集　</span></h5>
 		  <%= render 'form', content: @content, url: admin_content_path(@content),submit: '更新' %>
+		  <p><%= link_to "<<"+@content.title, admin_content_path(@content) %></p>
 		</div>
 	</div>
 </div>

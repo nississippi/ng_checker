@@ -27,6 +27,8 @@
 					<% end %>
 				</tbody>
 			</table>
+			<p><%= link_to "<<"+@content.title, admin_content_path(@content) %></p>
+			<p><%= link_to "<<"+@ng_expression.ng_expression, admin_ng_expression_path(@ng_expression) %></p>
 		</div>
 	</div>
 </div>

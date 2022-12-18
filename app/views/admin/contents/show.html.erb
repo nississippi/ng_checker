@@ -3,12 +3,6 @@
 	<div class="row">
 		<div class="offset-lg-2 col-lg-8 col-sm-12">
 			<table class="table mt-3">
-				<thead>
-					<tr>
-						<th>NG表現</th>
-						<th></th>
-					</tr>
-				</thead>
 				<tbody>
 					<% @ng_expressions.each do |ng| %>
 						<tr>
@@ -17,25 +11,23 @@
 							</td>
 							<!-- パスパラメータのng.idで親の引数、0で子の引数を指定している。パスパラメータ、クエリパラメータ(コロンいるやつ）の順に記述-->
 							<td>
-				        出てくる
-				        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
-					      /
-				        出てこない
-				        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
-					      /
-				        どちらとも言えない
-				        <%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
+								◯
+								<%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
+								/
+								×
+								<%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
+								/
+								△
+								<%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
 							</td>
-						</tr>
-						<tr>
 							<td>
 								<%= link_to "コメント", admin_ng_expression_comments_path(ng.id, content_id: @content.id) %>
 							</td>
-							<td></td>
 						</tr>
 					<% end %>
 				</tbody>
 			</table>
+			<p><%= link_to "<<コンテンツ一覧", admin_contents_path %></p>
 		</div>
 	</div>
 </div>

@@ -1,6 +1,6 @@
 <div class="container mt-5">
 	<div class="row">
-		<div class="col-lg-6 col-md-8 col-sm-12">
+		<div class="offset-lg-2 col-lg-8 col-sm-12">
 			<h5 class="text-center text-light">
 				<span class="bg-primary">
 					<%= @content.title %>に<%= @ng_expression.ng_expression %>は出てくる？
@@ -9,7 +9,6 @@
 		  <%= render 'form', comment: @comment,
 			  content: @content, ng_expression: @ng_expression,
 			  url: ng_expression_comments_path,
-		  	title: 'コメント',
 		  	submit: '送信',
 		  	draft: '下書き保存' %>
 		  <%= link_to"戻る", content_path(@content), class:"border-primary border-bottom" %>

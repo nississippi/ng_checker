@@ -1,6 +1,6 @@
 <div class="container mt-5">
 	<div class="row">
-		<div class="col-lg-2 col-md-4 col-sm-12">
+		<div class="offset-lg-1 col-lg-2 col-md-4 col-sm-6">
 
 		  <%# movieinfo = JSON.parse((Tmdb::Search.movie(@content.title)).to_json) %>
 		  <%# movieinfo = JSON.parse((Tmdb::Movie.detail(@content.tmdb_id, language: 'jp')).to_json) %>
@@ -9,18 +9,19 @@
 				<%= image_tag 'https://image.tmdb.org/t/p/w1280' + movieinfo['table']['poster_path'],class: "card-img" %>
 			<% end %>
 		</div>
-		<div class="col-lg-8 col-md-8 col-sm-12">
+		<div class="offset-lg-1 col-lg-8 col-md-8 col-sm-12">
 			<h5><%= @content.title %></h5>
 			<h5 class="text-muted"><small><%= @content.release_date %></small></h5>
 			<%= movieinfo['table']['overview'] %>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-lg-8 col-md-8 col-sm-12">
+		<div class="offset-lg-2 col-lg-8 col-sm-12">
 			<table class="table mt-3">
 				<thead>
 					<tr>
 						<th>NG一覧</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -59,6 +60,7 @@
 							</td>
 						</tr>
 						<tr>
+							<td></td>
 							<td>
 								<% if customer_signed_in? %>
 									<%= link_to "コメント追加", new_ng_expression_comment_path(ng.id, content_id: @content.id) %>

@@ -1,12 +1,13 @@
 <div class="container mt-5">
 	<div class="row">
     <% if @range == "NgExpression" %>
-		  <div class="col-lg-6 col-md-8 col-sm-12">
+		  <div class="offset-lg-2 col-lg-8 col-sm-12">
         「<%= @ng_expression %>」の検索結果
         <table class="table mt-3">
   				<thead>
   					<tr>
-  						<th>NG表現一覧</th>
+  						<th>NG表現</th>
+  						<th>分類</th>
   					</tr>
   				</thead>
   				<tbody>
@@ -15,6 +16,7 @@
   							<td>
   								<%= link_to ng.ng_expression, ng_expression_path(ng)%>
   							</td>
+  							<td><%= ng.ng_genre.ng_genre %></td>
   						</tr>
   					<% end %>
   				</tbody>
@@ -32,7 +34,7 @@
             <% i = 0 %>
             <% while i < movieinfo['table']['results'].count %>
               <div class="card" style="height: 200px;">
-                <div class="row no-gutters">
+                <div class="row">
                 <%if movieinfo['table']['results'][i]['table']['title'].present?%>
                   <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
                     <div class="col-2">
@@ -48,7 +50,7 @@
                             name: movieinfo['table']['results'][i]['table']['title'],
                             release: movieinfo['table']['results'][i]['table']['release_date'],
                             tmdb_id: movieinfo['table']['results'][i]['table']['id']
-                            ), method: :post %>
+                            ), method: :post, class: "stretched-link" %>
                       </h5>
                     <% else %>
                       <p>
