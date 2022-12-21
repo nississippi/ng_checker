@@ -76,9 +76,10 @@ ActiveRecord::Schema.define(version: 2022_12_13_104607) do
 
   create_table "contents", force: :cascade do |t|
     t.string "title"
-    t.integer "release_year"
+    t.text "release_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "tmdb_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -125,9 +126,9 @@ ActiveRecord::Schema.define(version: 2022_12_13_104607) do
   create_table "ng_expressions", force: :cascade do |t|
     t.integer "ng_genre_id", null: false
     t.string "ng_expression"
+    t.integer "vote"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "vote"
     t.index ["ng_genre_id"], name: "index_ng_expressions_on_ng_genre_id"
   end
 
