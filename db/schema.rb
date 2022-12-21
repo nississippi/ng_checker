@@ -76,14 +76,9 @@ ActiveRecord::Schema.define(version: 2022_12_13_104607) do
 
   create_table "contents", force: :cascade do |t|
     t.string "title"
-    t.text "release_date"
-    t.integer "story_genre_id"
-    t.integer "media_genre_id"
+    t.integer "release_year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "tmdb_id"
-    t.index ["media_genre_id"], name: "index_contents_on_media_genre_id"
-    t.index ["story_genre_id"], name: "index_contents_on_story_genre_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -164,16 +159,6 @@ ActiveRecord::Schema.define(version: 2022_12_13_104607) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["content_id"], name: "index_story_tag_contents_on_content_id"
     t.index ["story_genre_id"], name: "index_story_tag_contents_on_story_genre_id"
-  end
-
-  create_table "votes", force: :cascade do |t|
-    t.integer "vote"
-    t.integer "customer_id"
-    t.integer "ng_expression_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_votes_on_customer_id"
-    t.index ["ng_expression_id"], name: "index_votes_on_ng_expression_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
