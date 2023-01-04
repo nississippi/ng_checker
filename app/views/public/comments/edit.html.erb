@@ -8,7 +8,7 @@
 			</h5>
 		  <%= render 'form', comment: @comment,
 			  content: @content, ng_expression: @ng_expression,
-			  url: ng_expression_comment_path(@ng_expression.id, @comment.id),,submit: '更新', draft: '下書き保存' %>
+			  url: ng_expression_comment_path(@ng_expression.id, @comment.id),submit: '更新', draft: '下書き保存' %>
 		  <%= link_to"コメント一覧に戻る", ng_expression_comments_path(@ng_expression, content_id: @content.id), class:"border-primary border-bottom" %>
 		</div>
 	</div>
