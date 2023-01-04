@@ -65,7 +65,8 @@
 								<% if customer_signed_in? %>
 									<%= link_to "コメント追加", new_ng_expression_comment_path(ng.id, content_id: @content.id) %>
 								<% end %>
-								<%= link_to "コメント一覧", ng_expression_comments_path(ng.id, content_id: @content.id) %>
+								<%= link_to "コメント一覧(" + @comments.where(ng_expression_id: ng.id).count.to_s + ")",
+									ng_expression_comments_path(ng.id, content_id: @content.id) %>
 							</td>
 						</tr>
 					<% end %>

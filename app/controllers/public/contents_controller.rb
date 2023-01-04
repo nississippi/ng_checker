@@ -5,7 +5,7 @@ class Public::ContentsController < ApplicationController
   Tmdb::Api.language("ja")
 
   def create
-    #送られてきた映画のタイトルがcontentモデルのタイトルカラムにあるか調べてなければデータ保存する
+    #送られてきた映画のタイトルがcontentモデルのタイトルカラムにあるか調べて,なければデータ保存する
     #下記のままでは部分一致idが一番若いものを登録してしまう？
     #binding.pry
     @content = Content.find_or_create_by(
@@ -30,5 +30,6 @@ class Public::ContentsController < ApplicationController
     end
     @ng_expressions = all_ng_expressions.page(params[:page])
     @ng_answers = @content.ng_answers
+    @comments = Comment.where(content_id: @content.id, is_draft: false)
   end
 end
