@@ -1,5 +1,6 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_customer!, except: [:index]
+  before_action :ensure_customer, only: [:edit, :update, :destroy]
 
   def new
     @comment = Comment.new
@@ -17,11 +18,12 @@ class Public::CommentsController < ApplicationController
     if params[:post]
       if @comment.save
         #クエリパラメータでcontent_idを渡す必要がある
-        redirect_to ng_expression_comments_path(content_id: comment_params[:content_id])
+        redirect_to ng_expression_comments_path(content_id: comment_params[:content_id]),
+        notice: "コメントを投稿しました！"
       else
         @content = Content.find(comment_params[:content_id])
         @ng_expression = NgExpression.find(comment_params[:ng_expression_id])
-        render :new, alert: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
+        render :new
       end
     # 下書きボタンを押下した場合
     else
@@ -31,7 +33,7 @@ class Public::CommentsController < ApplicationController
       else
         @content = Content.find(comment_params[:content_id])
         @ng_expression = NgExpression.find(comment_params[:ng_expression_id])
-        render :new, alert: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
+        render :new
       end
     end
   end
@@ -71,5 +73,11 @@ class Public::CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment, :ng_expression_id, :content_id)
+  end
+
+  def ensure_customer
+    @comments = current_customer.comments
+    @comment = @comments.find_by(id: params[:id])
+    redirect_to ng_expression_comments_path(content_id: params[:content_id]) unless @comment
   end
 end
