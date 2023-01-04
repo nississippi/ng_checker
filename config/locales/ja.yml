@@ -1,32 +1,35 @@
- ja:
-    enums:
-      ng_expression:
-        vote:
-          yes: "◯"
-          difficult: "△"
-          no: "×"
-    activerecord:
-      attributes:
-        customer:
-          nickname: ニックネーム
-        comment:
-          comment: コメント
-        content:
-          title: タイトル
-        media_genre:
-          media: 媒体
-        ng_genre:
-          ng_genre: ジャンル
-        ng_expression:
-          ng_expression: NG表現
-          ng_genre: ジャンル
-        story_genre:
-          story: 作品傾向
-      models:
-        customer: ユーザー
-        content: コンテンツ
-        media_genre: 媒体
-        ng_genre: ジャンル
-        ng_expression: NG表現
-        story_genre: 作品傾向
+ja:
+  enums:
+    ng_expression:
+      vote:
+        yes: "◯"
+        difficult: "△"
+        no: "×"
+  activerecord:
+    attributes:
+      customer:
+        nickname: ニックネーム
+      comment:
         comment: コメント
+      content:
+        title: タイトル
+      media_genre:
+        media: 媒体
+      ng_genre:
+        ng_genre: ジャンル
+      ng_expression:
+        ng_expression: NG表現
+        ng_genre: ジャンル
+      story_genre:
+        story: 作品傾向
+    models:
+      customer: ユーザー
+      content: コンテンツ
+      media_genre: 媒体
+      ng_genre: ジャンル
+      ng_expression: NG表現
+      story_genre: 作品傾向
+      comment: コメント
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"

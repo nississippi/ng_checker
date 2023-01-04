@@ -7,7 +7,9 @@
       <table class="table mt-3">
 				<thead>
 					<tr>
-						<th colspan="2" class="text-center">コメント一覧</th>
+						<th>コメント</th>
+						<th>投稿/更新日時</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -24,6 +26,7 @@
 											<p class ="text-secondary"><small><%= comment.comment %>(下書き)</small></p>
 										<% end %>
 									</td>
+									<td><%= l comment.updated_at %></td>
 									<td>
 										<% if comment.customer_id == current_customer.id %>
 											<%= link_to "編集",
@@ -41,6 +44,7 @@
 							<% unless comment.is_draft %>
 								<tr>
 									<td><%= comment.comment %></td>
+									<td><%= l comment.updated_at %></td>
 									<td></td>
 								</tr>
 							<% end %>
@@ -49,7 +53,7 @@
 				</tbody>
 			</table>
 			<% if customer_signed_in? %>
-				<p><%= link_to "コメント追加に戻る", new_ng_expression_comment_path(@ng_expression.id, content_id: @content.id) %></p>
+				<p><%= link_to "<<コメント追加", new_ng_expression_comment_path(@ng_expression.id, content_id: @content.id) %></p>
 			<% end %>
 			<p><%= link_to "<<"+@content.title, content_path(@content) %></p>
 			<p><%= link_to "<<"+@ng_expression.ng_expression, ng_expression_path(@ng_expression) %></p>
