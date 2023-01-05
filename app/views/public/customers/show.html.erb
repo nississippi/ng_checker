@@ -34,6 +34,7 @@
           <tr>
             <th>下書きコメント</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -43,6 +44,15 @@
               <td>
                 <%=comment.content.title %>に<%=comment.ng_expression.ng_expression %>は出てくる？
               </td>
+              <td>
+								<%= link_to "編集",
+									edit_ng_expression_comment_path(comment.ng_expression.id, comment.id, content_id: comment.content.id),
+									class: "btn btn-sm btn-success" %>
+								<%= link_to "削除",
+									ng_expression_comment_path(comment.ng_expression.id, comment.id), method: :delete,
+									data: { confirm: '本当に削除しますか？' },
+									class:"btn btn-sm btn-danger" %>
+							</td>
             </tr>
           <% end %>
         </tbody>
