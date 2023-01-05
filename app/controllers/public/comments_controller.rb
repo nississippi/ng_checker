@@ -55,10 +55,22 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @content = Content.find(@comment.content_id)
     @ng_expression = NgExpression.find(@comment.ng_expression_id)
-    if @comment.update(comment_params)
-      redirect_to ng_expression_comments_path(content_id: comment_params[:content_id])
+    # 投稿ボタンを押下した場合
+    if params[:post]
+      @comment.is_draft = false
+      if @comment.update(comment_params)
+        redirect_to ng_expression_comments_path(content_id: comment_params[:content_id])
+      else
+        render :edit
+      end
+    # 下書きボタンを押下した場合
     else
-      render :edit
+      @comment.is_draft = true
+      if @comment.update(comment_params)
+        redirect_to ng_expression_comments_path(content_id: comment_params[:content_id])
+      else
+        render :edit
+      end
     end
   end
 
