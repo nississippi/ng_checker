@@ -5,6 +5,7 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = current_customer
     @bookmarks = @customer.bookmarks
+    @comments = @customer.comments.where(is_draft: true)
   end
 
   def edit

@@ -28,6 +28,25 @@
           <% end %>
         </tbody>
       </table>
+
+      <table class ="table mt-5">
+        <thead>
+          <tr>
+            <th>下書きコメント</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @comments.each do |comment| %>
+            <tr>
+              <td><%=comment.comment %></td>
+              <td>
+                <%=comment.content.title %>に<%=comment.ng_expression.ng_expression %>は出てくる？
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 		</div>
 	</div>
 </div>
