@@ -28,7 +28,7 @@
 					<% @ng_expressions.each do |ng| %>
 						<tr>
 							<td>
-								<%= ng.ng_expression %>は出てくる？
+								<%= link_to ng.ng_expression, ng_expression_path(ng) %>は出てくる？
 							</td>
 							<!-- パスパラメータのng.idで親の引数、0で子の引数を指定している。パスパラメータ、クエリパラメータ(コロンいるやつ）の順に記述-->
 							<td>
@@ -65,6 +65,7 @@
 								<% if customer_signed_in? %>
 									<%= link_to "コメント追加", new_ng_expression_comment_path(ng.id, content_id: @content.id) %>
 								<% end %>
+								/
 								<%= link_to "コメント一覧(" + @comments.where(ng_expression_id: ng.id).count.to_s + ")",
 									ng_expression_comments_path(ng.id, content_id: @content.id) %>
 							</td>

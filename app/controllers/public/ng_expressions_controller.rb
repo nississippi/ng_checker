@@ -16,6 +16,7 @@ class Public::NgExpressionsController < ApplicationController
     @yes = @ng_expression.ng_answers.where(vote: "yes").group(:content_id)
     @no = @ng_expression.ng_answers.where(vote: "no").group(:content_id)
     @contents = Content.all
+    @comments = Comment.where(ng_expression_id: @ng_expression.id, is_draft: false)
   end
 
   # def create
