@@ -7,7 +7,7 @@
 					<% @ng_expressions.each do |ng| %>
 						<tr>
 							<td>
-								<%= ng.ng_expression %>
+								<%= link_to ng.ng_expression, admin_ng_expression_path(ng) %>
 							</td>
 							<!-- パスパラメータのng.idで親の引数、0で子の引数を指定している。パスパラメータ、クエリパラメータ(コロンいるやつ）の順に記述-->
 							<td>
@@ -21,7 +21,8 @@
 								<%= @content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
 							</td>
 							<td>
-								<%= link_to "コメント", admin_ng_expression_comments_path(ng.id, content_id: @content.id) %>
+								<%= link_to "コメント一覧(" + @comments.where(ng_expression_id: ng.id).count.to_s + ")",
+									admin_ng_expression_comments_path(ng.id, content_id: @content.id) %>
 							</td>
 						</tr>
 					<% end %>

@@ -76,7 +76,8 @@
 									<%= content.ng_answers.where(ng_expression_id: @ng_expression.id, vote: 2).count %>
 								</td>
 								<td>
-									<%= link_to "コメント一覧", admin_ng_expression_comments_path(@ng_expression.id, content_id: content.id) %>
+									<%= link_to "コメント一覧(" + @comments.where(content_id: content.id).count.to_s + ")",
+										admin_ng_expression_comments_path(@ng_expression.id, content_id: content.id) %>
 								</td>
 							</tr>
 						<% end %>

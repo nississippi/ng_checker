@@ -43,6 +43,7 @@ class Admin::ContentsController < ApplicationController
     end
     @ng_expressions = all_ng_expressions.page(params[:page])
     @ng_answers = @content.ng_answers
+    @comments = Comment.where(content_id: @content.id, is_draft: false)
   end
 
   def edit
