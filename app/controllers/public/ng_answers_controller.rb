@@ -28,7 +28,7 @@ class Public::NgAnswersController < ApplicationController
     #content = ng_answer.ng_expression.content
     # TODO refere リファラーというやつを使うと元居たページに戻れる
     #redirect_to content_path(ng_answer_params[:content_id])
-    redirect_to request.referer
+    #redirect_to request.referer
   end
 
   private
