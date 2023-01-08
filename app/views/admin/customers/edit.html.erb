@@ -14,8 +14,8 @@
 						</tr>
 						<tr>
 							<th>ステータス</th>
-							<td><%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効", class: "text-deleted" %></td>
-							<td><%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会済み", class: "text-invalid" %></td>
+							<td><%= f.radio_button :is_deleted, false %><%= f.label :is_deleted_false, "有効", class: "text-deleted" %></td>
+							<td><%= f.radio_button :is_deleted, true %><%= f.label :is_deleted_true, "退会済み", class: "text-invalid" %></td>
 						</tr>
 						<tr>
 							<td class="text-center" colspan="3"><%= f.submit "更新", class: "btn btn-sm btn-primary" %></td>
