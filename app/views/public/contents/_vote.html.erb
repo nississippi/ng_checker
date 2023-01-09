@@ -12,32 +12,8 @@
 					<%= link_to ng.ng_expression, ng_expression_path(ng) %>は出てくる？
 				</td>
 				<!-- パスパラメータのng.idで親の引数、0で子の引数を指定している。パスパラメータ、クエリパラメータ(コロンいるやつ）の順に記述-->
-				<td>
-					<% if customer_signed_in? %>
-						<%= link_to ng_expression_ng_answer_vote_path(ng.id, 0, content_id: content.id),class: "vote", method: :post, remote: true do %>
-							◯
-							<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
-						<% end %>
-						/
-						<%= link_to ng_expression_ng_answer_vote_path(ng.id, 1, content_id: content.id),class: "vote", method: :post, remote: true do %>
-							×
-							<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
-						<% end %>
-						/
-						<%= link_to ng_expression_ng_answer_vote_path(ng.id, 2, content_id: content.id),class: "vote", method: :post, remote: true do %>
-							△
-							<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
-						<% end %>
-					<% else %>
-						◯
-						<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
-						/
-						×
-						<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
-						/
-						△
-						<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
-					<% end %>
+				<td class=<%= "vote-ng-" + ng.id.to_s + "-content-" + content.id.to_s %>>
+					<%= render 'yes_no_difficult', content: content, ng: ng %>
 				</td>
 			</tr>
 			<tr>

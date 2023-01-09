@@ -2,9 +2,7 @@ class Public::NgAnswersController < ApplicationController
   before_action :authenticate_customer!
 
   def create
-    @content = Content.find(params[:content_id])
-    @ng_expressions = NgExpression.all
-    @comments = Comment.where(content_id: @content.id, is_draft: false)
+
     current_ng_answer = NgAnswer.find_by(
       ng_expression_id: ng_answer_params[:ng_expression_id],
       content_id: ng_answer_params[:content_id],
@@ -21,13 +19,13 @@ class Public::NgAnswersController < ApplicationController
       end
     end
 
-    ng_answer = NgAnswer.new(
+    @ng_answer = NgAnswer.new(
       ng_expression_id: ng_answer_params[:ng_expression_id],
       content_id: ng_answer_params[:content_id],
       customer_id: current_customer.id,
       vote: ng_answer_params[:vote].to_i)
 
-    ng_answer.save
+    @ng_answer.save
     #content = ng_answer.ng_expression.content
     # TODO refere リファラーというやつを使うと元居たページに戻れる
     #redirect_to content_path(ng_answer_params[:content_id])

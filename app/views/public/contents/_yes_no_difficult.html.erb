@@ -1,0 +1,25 @@
+<% if customer_signed_in? %>
+	<%= link_to ng_expression_ng_answer_vote_path(ng.id, 0, content_id: content.id),class: "vote", method: :post, remote: true do %>
+		◯
+		<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
+	<% end %>
+	/
+	<%= link_to ng_expression_ng_answer_vote_path(ng.id, 1, content_id: content.id),class: "vote", method: :post, remote: true do %>
+		×
+		<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
+	<% end %>
+	/
+	<%= link_to ng_expression_ng_answer_vote_path(ng.id, 2, content_id: content.id),class: "vote", method: :post, remote: true do %>
+		△
+		<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
+	<% end %>
+<% else %>
+	◯
+	<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
+	/
+	×
+	<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
+	/
+	△
+	<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
+<% end %>
