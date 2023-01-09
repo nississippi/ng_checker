@@ -1,11 +1,3 @@
-<!--$(document).ready(function () {-->
-<!--  $('.vote').on('click', function(){-->
-<!--    $(this).css('color','red');-->
-<!--  });-->
-<!--});-->
-<!--違うディレクトリの時は頭から指定する-->
-
-
 $('.vote-ng-<%= @ng_answer.ng_expression_id %>-content-<%= @ng_answer.content_id %>').html(
   "<%= j(render 'public/contents/yes_no_difficult', content: @ng_answer.content, ng: @ng_answer.ng_expression) %>"
   )

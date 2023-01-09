@@ -3,19 +3,20 @@ class Public::NgAnswersController < ApplicationController
 
   def create
 
-    current_ng_answer = NgAnswer.find_by(
+    @current_ng_answer = NgAnswer.find_by(
       ng_expression_id: ng_answer_params[:ng_expression_id],
       content_id: ng_answer_params[:content_id],
       customer_id: current_customer.id)
 
-    if current_ng_answer
-      current_ng_answer.destroy!
+    if @current_ng_answer
+      @current_ng_answer.destroy!
 
-      if current_ng_answer.vote_before_type_cast == ng_answer_params[:vote].to_i
+      if @current_ng_answer.vote_before_type_cast == ng_answer_params[:vote].to_i
         #returnで処理終了
         #content_pathへのredirectだとNG詳細ページから投票しても映画詳細ページに飛んでしまうので記述変更
         #return redirect_to content_path(ng_answer_params[:content_id])
-        # return redirect_to request.referer
+        render 'vote_destroy'
+        return
       end
     end
 
@@ -30,6 +31,7 @@ class Public::NgAnswersController < ApplicationController
     # TODO refere リファラーというやつを使うと元居たページに戻れる
     #redirect_to content_path(ng_answer_params[:content_id])
     # redirect_to request.referer
+    render 'vote_create'
   end
 
   private
