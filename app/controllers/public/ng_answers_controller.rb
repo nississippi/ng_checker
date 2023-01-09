@@ -2,6 +2,9 @@ class Public::NgAnswersController < ApplicationController
   before_action :authenticate_customer!
 
   def create
+    @content = Content.find(params[:content_id])
+    @ng_expressions = NgExpression.all
+    @comments = Comment.where(content_id: @content.id, is_draft: false)
     current_ng_answer = NgAnswer.find_by(
       ng_expression_id: ng_answer_params[:ng_expression_id],
       content_id: ng_answer_params[:content_id],
@@ -14,7 +17,7 @@ class Public::NgAnswersController < ApplicationController
         #returnで処理終了
         #content_pathへのredirectだとNG詳細ページから投票しても映画詳細ページに飛んでしまうので記述変更
         #return redirect_to content_path(ng_answer_params[:content_id])
-        return redirect_to request.referer
+        # return redirect_to request.referer
       end
     end
 
@@ -28,7 +31,7 @@ class Public::NgAnswersController < ApplicationController
     #content = ng_answer.ng_expression.content
     # TODO refere リファラーというやつを使うと元居たページに戻れる
     #redirect_to content_path(ng_answer_params[:content_id])
-    #redirect_to request.referer
+    # redirect_to request.referer
   end
 
   private

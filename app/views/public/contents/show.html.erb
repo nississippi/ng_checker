@@ -16,33 +16,8 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="offset-lg-2 col-lg-8 col-sm-12">
-			<table class="table mt-3">
-				<thead>
-					<tr>
-						<th>NG一覧</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @ng_expressions.each do |ng| %>
-						<tr>
-							<%= render 'vote', content: @content, ng: ng %>
-						</tr>
-						<tr>
-							<td></td>
-							<td>
-								<% if customer_signed_in? %>
-									<%= link_to "コメント追加", new_ng_expression_comment_path(ng.id, content_id: @content.id) %>
-								<% end %>
-								/
-								<%= link_to "コメント一覧(" + @comments.where(ng_expression_id: ng.id).count.to_s + ")",
-									ng_expression_comments_path(ng.id, content_id: @content.id) %>
-							</td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
+		<div id="ng_answers" class="offset-lg-2 col-lg-8 col-sm-12">
+			<%= render 'vote', content: @content, ng_expressions: @ng_expressions, comments: @comments %>
 		</div>
 	</div>
 </div>

@@ -1,0 +1,11 @@
+<!--$(document).ready(function () {-->
+<!--  $('.vote').on('click', function(){-->
+<!--    $(this).css('color','red');-->
+<!--  });-->
+<!--});-->
+<!--違うディレクトリの時は頭から指定する-->
+$(document).ready(function () {
+  $('.vote').on('click', function(){
+    $('#ng_answers').html("<%= escape_javascript(render 'public/contents/vote', content: @content, ng_expressions: @ng_expressions, comments: @comments) %>");
+  });
+});

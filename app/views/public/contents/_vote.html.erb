@@ -1,31 +1,56 @@
-<td>
-	<%= link_to ng.ng_expression, ng_expression_path(ng) %>は出てくる？
-</td>
-<!-- パスパラメータのng.idで親の引数、0で子の引数を指定している。パスパラメータ、クエリパラメータ(コロンいるやつ）の順に記述-->
-<td>
-	<% if customer_signed_in? %>
-		<%= link_to ng_expression_ng_answer_vote_path(ng.id, 0, content_id: content.id),class: "yes", method: :post, remote: true do %>
-			◯
-			<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
+<table class="table mt-3">
+	<thead>
+		<tr>
+			<th>NG一覧</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% ng_expressions.each do |ng| %>
+			<tr>
+				<td>
+					<%= link_to ng.ng_expression, ng_expression_path(ng) %>は出てくる？
+				</td>
+				<!-- パスパラメータのng.idで親の引数、0で子の引数を指定している。パスパラメータ、クエリパラメータ(コロンいるやつ）の順に記述-->
+				<td>
+					<% if customer_signed_in? %>
+						<%= link_to ng_expression_ng_answer_vote_path(ng.id, 0, content_id: content.id),class: "vote", method: :post, remote: true do %>
+							◯
+							<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
+						<% end %>
+						/
+						<%= link_to ng_expression_ng_answer_vote_path(ng.id, 1, content_id: content.id),class: "vote", method: :post, remote: true do %>
+							×
+							<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
+						<% end %>
+						/
+						<%= link_to ng_expression_ng_answer_vote_path(ng.id, 2, content_id: content.id),class: "vote", method: :post, remote: true do %>
+							△
+							<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
+						<% end %>
+					<% else %>
+						◯
+						<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
+						/
+						×
+						<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
+						/
+						△
+						<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<% if customer_signed_in? %>
+						<%= link_to "コメント追加", new_ng_expression_comment_path(ng.id, content_id: content.id) %>
+					<% end %>
+					/
+					<%= link_to "コメント一覧(" + comments.where(ng_expression_id: ng.id).count.to_s + ")",
+						ng_expression_comments_path(ng.id, content_id: content.id) %>
+				</td>
+			</tr>
 		<% end %>
-		/
-		<%= link_to ng_expression_ng_answer_vote_path(ng.id, 1, content_id: content.id),class: "no", method: :post, remote: true do %>
-			×
-			<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
-		<% end %>
-		/
-		<%= link_to ng_expression_ng_answer_vote_path(ng.id, 2, content_id: content.id),class: "difficult", method: :post, remote: true do %>
-			△
-			<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
-		<% end %>
-	<% else %>
-		◯
-		<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 0).count %>
-		/
-		×
-		<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 1).count %>
-		/
-		△
-		<%= content.ng_answers.where(ng_expression_id: ng.id, vote: 2).count %>
-	<% end %>
-</td>
+	</tbody>
+</table>
