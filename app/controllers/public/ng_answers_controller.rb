@@ -15,8 +15,8 @@ class Public::NgAnswersController < ApplicationController
         #returnで処理終了
         #content_pathへのredirectだとNG詳細ページから投票しても映画詳細ページに飛んでしまうので記述変更
         #return redirect_to content_path(ng_answer_params[:content_id])
-        render 'vote_destroy'
-        return
+        # render 'vote_destroy'
+        return redirect_to request.referer
       end
     end
 
@@ -30,8 +30,8 @@ class Public::NgAnswersController < ApplicationController
     #content = ng_answer.ng_expression.content
     # TODO refere リファラーというやつを使うと元居たページに戻れる
     #redirect_to content_path(ng_answer_params[:content_id])
-    # redirect_to request.referer
-    render 'vote_create'
+    redirect_to request.referer
+    # render 'vote_create'
   end
 
   private
