@@ -11,7 +11,10 @@
 			  url: ng_expression_comments_path,
 		  	submit: '送信',
 		  	draft: '下書き保存' %>
-		  <%= link_to"戻る", content_path(@content), class:"border-primary border-bottom" %>
+
+			<p><%= link_to "<<コメント一覧", ng_expression_comments_path(@ng_expression.id, content_id: @content.id) %></p>
+			<p><%= link_to "<<"+@content.title, content_path(@content) %></p>
+			<p><%= link_to "<<"+@ng_expression.ng_expression, ng_expression_path(@ng_expression) %></p>
 		</div>
 	</div>
 </div>
