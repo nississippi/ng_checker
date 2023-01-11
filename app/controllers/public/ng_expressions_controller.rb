@@ -13,8 +13,9 @@ class Public::NgExpressionsController < ApplicationController
 
   def show
     @ng_expression = NgExpression.find(params[:id])
-    @yes = @ng_expression.ng_answers.where(vote: "yes").group(:content_id)
-    @no = @ng_expression.ng_answers.where(vote: "no").group(:content_id)
+    # .group(:content_id)がないと投票数分のレコードが表示されてしまう
+    # @yes = @ng_expression.ng_answers.where(vote: "yes").group(:content_id)
+    # @no = @ng_expression.ng_answers.where(vote: "no").group(:content_id)
     @contents = Content.all
     @comments = Comment.where(ng_expression_id: @ng_expression.id, is_draft: false)
   end
