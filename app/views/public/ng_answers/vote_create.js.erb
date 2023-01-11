@@ -1,3 +1,7 @@
-$('.vote-ng-<%= @ng_answer.ng_expression_id %>-content-<%= @ng_answer.content_id %>').html(
+$('.vote-content-<%= @ng_answer.content_id %>-ng-<%= @ng_answer.ng_expression_id %>').html(
   "<%= j(render 'public/contents/yes_no_difficult', content: @ng_answer.content, ng: @ng_answer.ng_expression) %>"
+  )
+
+$('.vote-ng-<%= @ng_answer.ng_expression_id %>-content-<%= @ng_answer.content_id %>').html(
+  "<%= j(render 'public/ng_expressions/yes_no_difficult', content: @ng_answer.content, ng_expression: @ng_answer.ng_expression) %>"
   )

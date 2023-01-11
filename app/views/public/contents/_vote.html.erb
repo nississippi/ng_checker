@@ -12,7 +12,7 @@
 					<%= link_to ng.ng_expression, ng_expression_path(ng) %>は出てくる？
 				</td>
 				<!-- パスパラメータのng.idで親の引数、0で子の引数を指定している。パスパラメータ、クエリパラメータ(コロンいるやつ）の順に記述-->
-				<td class=<%= "vote-ng-" + ng.id.to_s + "-content-" + content.id.to_s %>>
+				<td class=<%= "vote-content-" + content.id.to_s + "-ng-" + ng.id.to_s %>>
 					<%= render 'yes_no_difficult', content: content, ng: ng %>
 				</td>
 			</tr>
