@@ -26,7 +26,7 @@
 											<p class ="text-secondary"><small><%= comment.comment %>(下書き)</small></p>
 										<% end %>
 									</td>
-									<td><%= l comment.updated_at %></td>
+									<td><small><%= l comment.updated_at %></small></td>
 									<td>
 										<% if comment.customer_id == current_customer.id %>
 											<%= link_to "編集",
@@ -44,7 +44,7 @@
 							<% unless comment.is_draft %>
 								<tr>
 									<td><%= comment.comment %></td>
-									<td><%= l comment.updated_at %></td>
+									<td><small><%= l comment.updated_at %></small></td>
 									<td></td>
 								</tr>
 							<% end %>
