@@ -5,21 +5,21 @@
     		<%= render 'layouts/error_messages', resource: @customer %>
     		<table class="table mt-3">
     			<tbody>
-    			  <tr>
-							<th>ユーザー名</th>
-							<td>
-							  <%= @customer.nickname %>
-							</td>
-							<td></td>
-						</tr>
-						<tr>
-							<th>ステータス</th>
-							<td><%= f.radio_button :is_deleted, false %><%= f.label :is_deleted_false, "有効", class: "text-deleted" %></td>
-							<td><%= f.radio_button :is_deleted, true %><%= f.label :is_deleted_true, "退会済み", class: "text-invalid" %></td>
-						</tr>
-						<tr>
-							<td class="text-center" colspan="3"><%= f.submit "更新", class: "btn btn-sm btn-primary" %></td>
-						</tr>
+    			  	<tr>
+						<th>ユーザー名</th>
+						<td>
+							<%= @customer.nickname %>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>ステータス</th>
+						<td><%= f.radio_button :is_deleted, false %><%= f.label :is_deleted_false, "有効", class: "text-deleted" %></td>
+						<td><%= f.radio_button :is_deleted, true %><%= f.label :is_deleted_true, "退会済み", class: "text-invalid" %></td>
+					</tr>
+					<tr>
+						<td class="text-center" colspan="3"><%= f.submit "更新", class: "btn btn-sm btn-primary" %></td>
+					</tr>
     			</tbody>
     		</table>
     	<% end %>
