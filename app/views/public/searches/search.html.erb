@@ -38,6 +38,7 @@
                 <%if movieinfo['table']['results'][i]['table']['title'].present?%>
                   <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
                     <div class="col-2 search-img">
+                      <!--画像の表示方法は、「BASEURL + 画像サイズ + 画像パス」-->
                       <%= image_tag 'https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "card-img" %>
                     </div>
                   <%end%>
