@@ -53,6 +53,7 @@
                             tmdb_id: movieinfo['table']['results'][i]['table']['id']
                             ), method: :post, class: "stretched-link" %>
                       </h5>
+                      <%= movieinfo['table']['results'][i]['table']['genre_ids']%>
                     <% else %>
                       <p>
                         <%= link_to movieinfo['table']['results'][i]['table']['title'],
