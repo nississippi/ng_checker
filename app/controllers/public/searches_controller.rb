@@ -8,6 +8,7 @@ class Public::SearchesController < ApplicationController
 
   def search
     @range = params[:range]
+     @genres = JSON.parse((Tmdb::Genre.movie_list).to_json)
 
     if @range == "NgExpression"
       @ng_expression = params[:looking_for]
