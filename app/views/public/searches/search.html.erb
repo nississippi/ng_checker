@@ -26,13 +26,6 @@
       <div class = "col-lg-12">
         <%if params[:looking_for].present? %>
           <% movieinfo = JSON.parse((Tmdb::Search.movie(params[:looking_for])).to_json) %>
-<% g = 0 %>
-<% while g < @genres.count %>
-<%= @genres[g]['table'] %><br>
-  <% g += 1%>
-<% end %>
-=====================
-<%= @genres.find {['id'] == 12 } %>
           <h2><%= params[:looking_for] %>の検索結果</h2>
           =====================
           <div class = "col-lg-12">
@@ -60,7 +53,8 @@
                       </h5>
                       <% x = 0 %>
                       <% while x < movieinfo['table']['results'][i]['table']['genre_ids'].count %>
-                        <%= movieinfo['table']['results'][i]['table']['genre_ids'][x] %>
+                        <% genre_id = movieinfo['table']['results'][i]['table']['genre_ids'][x] %>
+                        <%= @genres.find{|hash| hash['table']['id'] == genre_id }['table']['name'] %>
                         <% x += 1%>
                       <% end %>
                     <% else %>
