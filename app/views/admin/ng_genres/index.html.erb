@@ -21,7 +21,9 @@
 							admin_ng_expressions_path(ng_genre.id), class: "underline" %></td>
 							<td class="text-center">
 								<%= link_to "編集", edit_admin_ng_genre_path(ng_genre), class: "btn btn-sm btn-success" %>
-								<%= link_to "削除", admin_ng_genre_path(ng_genre), method: :delete, class:"btn btn-sm btn-danger" %>
+								<%= link_to "削除", admin_ng_genre_path(ng_genre), method: :delete,
+									data: { confirm: '該当ジャンルに含まれるNG表現も削除されますが、本当に削除しますか？' },
+									class:"btn btn-sm btn-danger" %>
 							</td>
 						</tr>
 					<% end %>
