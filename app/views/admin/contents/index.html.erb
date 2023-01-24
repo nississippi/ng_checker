@@ -1,32 +1,6 @@
 <div class="container mt-5">
 	<div class="row">
-		<div class="offset-lg-2 col-lg-2 col-sm-12">
-			<h5>
-				媒体
-				<%= link_to "+", admin_media_genres_path, class: "btn btn-sm btn-white shadow py-0" %>
-			</h5>
-				<ul class="list-unstyled">
-					<li><%= link_to "すべて", admin_contents_path %></li>
-					<% @media_genres.each do |media_genre| %>
-						<li>
-							<%= link_to media_genre.media, admin_contents_path(media_genre_id: media_genre.id) %>
-						</li>
-					<% end %>
-				</ul>
-			<h5>
-				作品傾向
-				<%= link_to "+", admin_story_genres_path, class: "btn btn-sm btn-white shadow py-0" %>
-			</h5>
-				<ul class="list-unstyled">
-					<li><%= link_to "すべて", admin_contents_path %></li>
-					<% @story_genres.each do |story_genre| %>
-						<li>
-							<%= link_to story_genre.story, admin_contents_path(story_genre_id: story_genre.id) %>
-						</li>
-					<% end %>
-				</ul>
-		</div>
-		<div class="col-lg-6 col-sm-12">
+		<div class="offset-lg-3 col-lg-6 col-sm-12">
 			<% if params[:story_genre_id] %>
 				<h5><%= @story_genre.story %></h5>
 			<% elsif params[:media_genre_id] %>
