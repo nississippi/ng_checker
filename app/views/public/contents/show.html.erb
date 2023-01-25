@@ -12,7 +12,17 @@
 		<div class="offset-lg-1 col-lg-8 col-md-8 col-sm-12">
 			<h5><%= @content.title %></h5>
 			<h5 class="text-muted"><small><%= @content.release_date %></small></h5>
-			<%= movieinfo['table']['overview'] %>
+			<p>
+				<% x = 0 %>
+	      <% while x < movieinfo['table']['genres'].count %>
+	        <%= movieinfo['table']['genres'][x]['table']['name'] %>
+	        <% if x+1 <  movieinfo['table']['genres'].count %>
+						<%='、' %>
+	        <% end %>
+	        <% x += 1%>
+	      <% end %>
+			</p>
+			<p><%= movieinfo['table']['overview'] %></p>
 		</div>
 	</div>
 	<div class="row">

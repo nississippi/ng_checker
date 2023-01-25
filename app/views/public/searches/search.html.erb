@@ -55,6 +55,9 @@
                       <% while x < movieinfo['table']['results'][i]['table']['genre_ids'].count %>
                         <% genre_id = movieinfo['table']['results'][i]['table']['genre_ids'][x] %>
                         <%= @genres.find{|hash| hash['table']['id'] == genre_id }['table']['name'] %>
+                        <% if x+1 <  movieinfo['table']['results'][i]['table']['genre_ids'].count %>
+              						<%='、' %>
+              	        <% end %>
                         <% x += 1%>
                       <% end %>
                     <% else %>
