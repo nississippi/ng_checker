@@ -96,6 +96,15 @@ ActiveRecord::Schema.define(version: 2022_12_13_104607) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
+  create_table "media_tag_contents", force: :cascade do |t|
+    t.integer "media_genre_id"
+    t.integer "content_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_media_tag_contents_on_content_id"
+    t.index ["media_genre_id"], name: "index_media_tag_contents_on_media_genre_id"
+  end
+
   create_table "ng_answers", force: :cascade do |t|
     t.integer "ng_expression_id"
     t.integer "customer_id"
@@ -130,6 +139,21 @@ ActiveRecord::Schema.define(version: 2022_12_13_104607) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["content_id"], name: "index_ng_tagging_contents_on_content_id"
     t.index ["ng_expression_id"], name: "index_ng_tagging_contents_on_ng_expression_id"
+  end
+
+  create_table "story_genres", force: :cascade do |t|
+    t.string "story"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "story_tag_contents", force: :cascade do |t|
+    t.integer "story_genre_id"
+    t.integer "content_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_story_tag_contents_on_content_id"
+    t.index ["story_genre_id"], name: "index_story_tag_contents_on_story_genre_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

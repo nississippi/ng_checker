@@ -11,30 +11,6 @@
 					<td><%= f.label :release_date, "公開" %></td>
 					<td><%= f.text_field :release_date, class: "form-control" %></td>
 				</tr>
-				<tr>
-					<td><%= f.label :media_genre_id, "媒体" %></td>
-					<td>
-						<%= f.collection_check_boxes(
-							:media_genre_ids, MediaGenre.all, :id, :media) do |media| %>
-				      <%= media.label do %>
-				        <%= media.check_box %>
-				        <%= media.text %>
-				      <% end %>
-				    <% end %>
-					</td>
-				</tr>
-				<tr>
-					<td class="text-nowrap"><%= f.label :story_genre_id, "作品傾向" %></td>
-					<td>
-						<%= f.collection_check_boxes(
-							:story_genre_ids,StoryGenre.all, :id, :story) do |story| %>
-				      <%= story.label do %>
-				        <%= story.check_box %>
-				        <%= story.text %>
-				      <% end %>
-				    <% end %>
-					</td>
-				</tr>
 			</tbody>
 		</table>
 	</div>
