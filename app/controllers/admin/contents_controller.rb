@@ -1,5 +1,9 @@
 class Admin::ContentsController < ApplicationController
   before_action :authenticate_admin!
+  
+  # def new
+  #   @content = Content.new
+  # end
 
   def create
     @content = Content.new(content_params)
@@ -11,7 +15,22 @@ class Admin::ContentsController < ApplicationController
   end
 
   def index
-    @contents = Content.page(params[:page])
+    @story_genres = StoryGenre.all
+    @media_genres = MediaGenre.all
+    if params[:story_genre_id] && params[:media_genre_id]
+      @story_genre = StoryGenre.find(params[:story_genre_id])
+      @media_genre = MediaGenre.find(params[:media_genre_id])
+      @contents = @story_genre.contents.where(media_genre_id: @media_genre.id).page(params[:page])
+    elsif params[:story_genre_id]
+      @story_genre = StoryGenre.find(params[:story_genre_id])
+      @contents = @story_genre.contents.page(params[:page])
+    elsif params[:media_genre_id]
+      @media_genre = MediaGenre.find(params[:media_genre_id])
+      @contents = @media_genre.contents.page(params[:page])
+    else
+      @contents = Content.page(params[:page])
+    end
+
   end
 
   def show
@@ -48,6 +67,6 @@ class Admin::ContentsController < ApplicationController
   private
 
   def content_params
-    params.require(:content).permit(:title, :release_year)
+    params.require(:content).permit(:title, :release_year, { media_genre_ids: [] }, { story_genre_ids: [] })
   end
 end

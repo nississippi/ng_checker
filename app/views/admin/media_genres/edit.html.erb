@@ -1,0 +1,9 @@
+<div class="container mt-5">
+	<div class="row">
+		<div class="offset-lg-2 col-lg-8 col-sm-12">
+			<h5 class="text-center text-light"><span class="bg-primary">　媒体編集　</span></h5>
+		  <%= render 'form', media_genre: @media, url: admin_media_genre_path(@media), submit: '更新' %>
+		  <%= link_to "<<媒体一覧", admin_media_genres_path %>
+		</div>
+	</div>
+</div>
