@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_13_104607) do
+ActiveRecord::Schema.define(version: 2022_12_02_141553) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -76,10 +76,10 @@ ActiveRecord::Schema.define(version: 2022_12_13_104607) do
 
   create_table "contents", force: :cascade do |t|
     t.string "title"
-    t.text "release_date"
+    t.string "release_date"
+    t.integer "tmdb_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "tmdb_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -99,10 +99,10 @@ ActiveRecord::Schema.define(version: 2022_12_13_104607) do
   create_table "ng_answers", force: :cascade do |t|
     t.integer "ng_expression_id"
     t.integer "customer_id"
+    t.integer "content_id"
     t.integer "vote"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "content_id", null: false
     t.index ["content_id"], name: "index_ng_answers_on_content_id"
     t.index ["customer_id"], name: "index_ng_answers_on_customer_id"
     t.index ["ng_expression_id"], name: "index_ng_answers_on_ng_expression_id"
@@ -136,6 +136,5 @@ ActiveRecord::Schema.define(version: 2022_12_13_104607) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "customers"
   add_foreign_key "bookmarks", "ng_expressions"
-  add_foreign_key "ng_answers", "contents"
   add_foreign_key "ng_expressions", "ng_genres"
 end

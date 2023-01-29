@@ -3,7 +3,8 @@ class CreateContents < ActiveRecord::Migration[6.1]
     create_table :contents do |t|
 
       t.string :title
-      t.integer :release_year
+      t.string :release_date
+      t.integer :tmdb_id, null: false
       t.timestamps
     end
   end
