@@ -36,5 +36,4 @@ ActiverecordによるDB検索機能実装
 
 ## 使用素材
 - 画像は以下のAPIを使用予定
-- The Movie Database (TMDb)
-https://www.themoviedb.org/
+- The Movie Database (TMDb) https://www.themoviedb.org/
