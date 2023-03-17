@@ -16,3 +16,13 @@
 		</div>
 	</div>
 </div>
+<% drink = [
+  {"name"=>"コーヒー","size"=>"S","price"=>"400","eat"=>"持ち帰り"} ,
+  {"name"=>"カフェオレ","size"=>"M","price"=>"500","eat"=>"持ち帰り"} ,
+  {"name"=>"オレンジジュース","size"=>"S","price"=>"450","eat"=>"店内"}] %>
+<% select_drink = drink.select { |x|x["size"]=="S" } %>
+<% i = 0 %>
+<% while i < select_drink.count %>
+  <%= select_drink[i]["name"] %>
+  <% i += 1%>
+<%end%>
