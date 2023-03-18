@@ -35,12 +35,13 @@
                 <div class="row">
                 <%if movieinfo['table']['results'][i]['table']['title'].present?%>
                   <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
-                    <div class="col-2 search-img">
+                  <!--col-xs-6ではなくcol-6と書く-->
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6 search-img">
                       <!--画像の表示方法は、「BASEURL + 画像サイズ + 画像パス」-->
                       <%= image_tag 'https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "card-img" %>
                     </div>
                   <%end%>
-                  <div class="col-10">
+                  <div class="col-lg-10 col-md-9 col-sm-8 col-6">
                     <!--()の中身はコントローラに送るパラメータ -->
                     <% if movieinfo['table']['results'][i]['table']['release_date'].present? %>
                       <h5 class="card-title">

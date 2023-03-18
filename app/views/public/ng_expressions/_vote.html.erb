@@ -2,7 +2,7 @@
 	<td>
 		<%= link_to content.title, content_path(content) %>に<%= ng_expression.ng_expression %>は出てくる？
 	</td>
-	<td class=<%= "vote-ng-" + ng_expression.id.to_s + "-content-" + content.id.to_s %>>
+	<td class="text-nowrap" <%= "vote-ng-" + ng_expression.id.to_s + "-content-" + content.id.to_s %>>
 		<%= render 'yes_no_difficult', content: content, ng_expression: ng_expression %>
 	</td>
 </tr>
