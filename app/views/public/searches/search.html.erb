@@ -4,24 +4,28 @@
 		  <div class="offset-lg-2 col-lg-8 col-sm-12">
 		    <% if params[:looking_for].present? %>
 		      「<%= @ng_expression %>」の検索結果
-          <table class="table mt-3">
-    				<thead>
-    					<tr>
-    						<th>NG表現</th>
-    						<th>分類</th>
-    					</tr>
-    				</thead>
-    				<tbody>
-    					<% @ng_expressions.each do |ng| %>
-    						<tr>
-    							<td>
-    								<%= link_to ng.ng_expression, ng_expression_path(ng)%>
-    							</td>
-    							<td><%= ng.ng_genre.ng_genre %></td>
-    						</tr>
-    					<% end %>
-    				</tbody>
-    			</table>
+		      <% if @ng_expressions.present? %>
+		        <table class="table mt-3">
+      				<thead>
+      					<tr>
+      						<th>NG表現</th>
+      						<th>分類</th>
+      					</tr>
+      				</thead>
+      				<tbody>
+      					<% @ng_expressions.each do |ng| %>
+      						<tr>
+      							<td>
+      								<%= link_to ng.ng_expression, ng_expression_path(ng)%>
+      							</td>
+      							<td><%= ng.ng_genre.ng_genre %></td>
+      						</tr>
+      					<% end %>
+      				</tbody>
+      			</table>
+		      <% else %>
+		        <p class ="mt-5 text-center">検索結果がありませんでした</p>
+		      <% end %>
 		    <% else %>
 		      <div class = "col-lg-12">
             <p class ="text-center">検索ワードを入力してください</p>
