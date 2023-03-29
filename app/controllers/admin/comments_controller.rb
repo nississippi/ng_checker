@@ -10,7 +10,6 @@ class Admin::CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find_by(id: params[:id])
-    binding.pry
     comment.destroy
     redirect_to request.referer
   end
